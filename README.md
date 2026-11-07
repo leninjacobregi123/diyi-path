@@ -22,6 +22,6 @@ To change a number, replace every copy of the old value in `index.html`.
 
 ## Hosting
 
-- GitHub Pages, repository `leninjacobregi123/diyi-path`, address `https://leninjacobregi123.github.io/diyi-path/`.
+- GitHub Pages, repository `leninjacobregi123/diyi-path`, address `https://leninjacobregi.me/diyi-path/` (the account's own domain, leninjacobregi.me, is used for all its GitHub Pages sites; `leninjacobregi123.github.io/diyi-path/` redirects there).
 - If a domain (e.g. diyipath.in) is bought later, update the address in `index.html` (canonical, `og:url`, `og:image`, JSON-LD), `sitemap.xml` and `robots.txt`.
 - **This folder is published publicly.** Never put business records, ledgers or financial files in it.
