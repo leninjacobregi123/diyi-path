@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://leninjacobregi123.github.io/diyi-path/sitemap.xml
