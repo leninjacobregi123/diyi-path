@@ -1,24 +1,25 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DIYI-PATH (formerly Kerala Electricals) – Electrical Shop at 6th Mile, Kumily</title>
-<meta name="description" content="Electrical shop at 6th Mile, Kumily, Idukki: wires, switches, MCBs, LED lights, fans, PVC pipes and fittings. Formerly Kerala Electricals – serving since 2008. Call or WhatsApp us.">
+<title data-i18n="meta.title">DIYI-PATH (formerly Kerala Electricals) – Electrical Store at 6th Mile, Kumily</title>
+<meta name="description" content="Electrical store at 6th Mile, Kumily, Idukki: wires, switches, MCBs, LED lights, fans, PVC pipes and fittings. Formerly Kerala Electricals – serving since 2008. Call or WhatsApp +91 94954 26446.">
 <link rel="canonical" href="https://leninjacobregi.me/diyi-path/">
-<meta name="theme-color" content="#111827">
+<meta name="theme-color" content="#0B1220">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/emblem-192.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DIYI-PATH">
 <meta property="og:title" content="DIYI-PATH (formerly Kerala Electricals) – 6th Mile, Kumily">
-<meta property="og:description" content="Wires, switches, lights, fans and fittings. Your electrical shop at 6th Mile, Kumily since 2008. Call or WhatsApp us.">
+<meta property="og:description" content="Wires, switches, lighting, fans and fittings. Your trusted electrical store at 6th Mile, Kumily since 2008. Call or WhatsApp us.">
 <meta property="og:url" content="https://leninjacobregi.me/diyi-path/">
 <meta property="og:image" content="https://leninjacobregi.me/diyi-path/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_IN">
+<meta property="og:locale:alternate" content="ml_IN">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
@@ -26,7 +27,7 @@
   "@type": "HardwareStore",
   "name": "DIYI-PATH",
   "alternateName": "Kerala Electricals",
-  "description": "Electrical shop at 6th Mile, Kumily, Idukki – wires, switches, MCBs, LED lights, fans, PVC pipes and fittings. Formerly Kerala Electricals, serving since 2008.",
+  "description": "Electrical store at 6th Mile, Kumily, Idukki – wires, switches, MCBs, LED lights, fans, PVC pipes and fittings. Formerly Kerala Electricals, serving since 2008.",
   "url": "https://leninjacobregi.me/diyi-path/",
   "logo": "https://leninjacobregi.me/diyi-path/assets/logo-header.png",
   "image": "https://leninjacobregi.me/diyi-path/assets/og-image.png",
@@ -54,255 +55,790 @@
   "hasMap": "https://maps.app.goo.gl/uQAgdNReKTRCJRX48"
 }
 </script>
+<script>
+  // Pick the language before the page paints: ?lang= link, then the visitor's last choice, then the phone's language.
+  (function () {
+    var root = document.documentElement, lang = 'en';
+    root.classList.add('js');
+    try {
+      var q = new URLSearchParams(location.search).get('lang');
+      var saved = localStorage.getItem('diyi-lang');
+      var prefersMl = (navigator.languages || [navigator.language || '']).some(function (l) { return /^ml\b/i.test(l); });
+      lang = (q === 'ml' || q === 'en') ? q : (saved === 'ml' || saved === 'en') ? saved : (prefersMl ? 'ml' : 'en');
+    } catch (e) {}
+    if (lang === 'ml') { root.lang = 'ml'; root.setAttribute('data-lang', 'ml'); root.classList.add('i18n-pending'); }
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap">
 <style>
 :root {
-  --graphite: #111827; --sky: #168BCB; --sky-ink: #0F6FA3; --sky-tint: #EAF5FC;
-  --green: #168A24; --green-ink: #12761F; --muted: #4B5563; --line: #E3E8EF; --soft: #F5F8FB; --red: #B42318;
+  --sky: #168BCB; --sky-600: #0F6FA3; --sky-700: #0B5C88; --sky-300: #7CC7EE; --sky-50: #EEF7FD;
+  --green: #168A24; --green-600: #12761F; --green-700: #0E6219; --green-300: #7EDB8B;
+  --ink: #111827; --ink-900: #0B1220; --muted: #4B5563; --line: #E5E9F0; --line-strong: #CFE3F3; --surface: #F6F8FB;
+  --on-dark: #E6EDF6; --on-dark-muted: #B8C7D9;
+  --radius: 18px; --radius-sm: 12px;
+  --shadow-sm: 0 1px 2px rgba(17, 24, 39, .06), 0 1px 1px rgba(17, 24, 39, .04);
+  --shadow-md: 0 14px 34px -14px rgba(17, 24, 39, .22), 0 4px 10px -6px rgba(17, 24, 39, .10);
+  --shadow-lg: 0 34px 70px -24px rgba(5, 10, 20, .6);
+  --font-head: "Outfit", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-body: "Work Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-ml: "Anek Malayalam", "Noto Sans Malayalam", "Nirmala UI", system-ui, sans-serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
 }
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body {
-  margin: 0; background: #fff; color: var(--graphite);
-  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Malayalam", "Nirmala UI", Arial, sans-serif;
-  padding-bottom: 76px;
-}
-img { max-width: 100%; height: auto; display: block; }
-a { color: var(--sky-ink); }
-[lang="ml"] { line-height: 1.75; }
-.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
-.ic { width: 22px; height: 22px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+html[data-lang="ml"] { --font-head: var(--font-ml); --font-body: var(--font-ml); }
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 84px; }
+body { margin: 0; background: #fff; color: var(--ink); font: 400 1rem/1.65 var(--font-body); -webkit-font-smoothing: antialiased; padding-bottom: 92px; }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: var(--sky-600); }
+h1, h2, h3 { margin: 0; font-family: var(--font-head); text-wrap: balance; }
+p { margin: 0; }
+ul, ol, dl, dd { margin: 0; }
+.wrap { width: min(1160px, 100% - 32px); margin-inline: auto; }
+.ic { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ic-fill { fill: currentColor; stroke: none; }
+:focus-visible { outline: 3px solid #F5A524; outline-offset: 3px; border-radius: 8px; }
+.skip { position: absolute; left: 12px; top: -80px; z-index: 100; padding: 10px 16px; border-radius: 10px; background: var(--ink); color: #fff; font-weight: 600; text-decoration: none; }
+.skip:focus { top: 12px; }
+html.i18n-pending body { opacity: 0; animation: reveal-page 0s linear 1.2s forwards; }
+@keyframes reveal-page { to { opacity: 1; } }
+html[data-lang="ml"] body { line-height: 1.75; }
+html[data-lang="ml"] h1, html[data-lang="ml"] h2, html[data-lang="ml"] h3 { letter-spacing: 0; line-height: 1.32; }
+html[data-lang="ml"] .eyebrow, html[data-lang="ml"] .footer h3 { letter-spacing: .02em; text-transform: none; }
+html[data-lang="ml"] .hero h1 { font-size: clamp(2rem, 4.8vw, 3.35rem); }
+html[data-lang="ml"] .section h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); }
+.status { border-radius: 16px; }
 
-/* header */
-.site-header { background: #fff; border-bottom: 1px solid var(--line); }
-.header-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: 10px; }
-.brand img { height: 40px; width: auto; }
-.former { margin: 0; text-align: right; font-size: .8rem; color: var(--muted); line-height: 1.35; }
-.former span { display: block; font-size: .78rem; }
-@media (max-width: 479px) { .former span { display: none; } }
+/* ---------- header ---------- */
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, .88); -webkit-backdrop-filter: saturate(180%) blur(14px); backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid transparent; transition: box-shadow .25s var(--ease), border-color .25s; }
+.site-header.scrolled { border-color: var(--line); box-shadow: 0 10px 24px -18px rgba(17, 24, 39, .45); }
+.nav { display: flex; align-items: center; gap: 14px; height: 68px; }
+.brand { margin-right: auto; display: flex; align-items: center; min-height: 44px; flex: none; }
+.brand img { height: 36px; width: auto; }
+.nav-links { display: none; gap: 2px; list-style: none; padding: 0; }
+.nav-links a { display: block; padding: 9px 13px; border-radius: 999px; color: var(--ink); text-decoration: none; font-weight: 500; font-size: .95rem; transition: background-color .2s, color .2s; }
+.nav-links a:hover { background: var(--sky-50); color: var(--sky-700); }
+.lang { display: inline-flex; align-items: center; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+.lang > .ic { width: 16px; height: 16px; margin: 0 4px 0 7px; color: var(--muted); }
+.lang button { appearance: none; border: 0; background: transparent; cursor: pointer; min-height: 38px; min-width: 44px; padding: 0 12px; border-radius: 999px; color: var(--muted); font: 600 .85rem/1 var(--font-body); transition: background-color .2s, color .2s; }
+.lang button[lang="ml"] { font-family: "Noto Sans Malayalam", "Nirmala UI", "Kartika", "Malayalam Sangam MN", "Malayalam MN", sans-serif; font-size: .9rem; }
+.lang button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.lang button[aria-pressed="false"]:hover { color: var(--ink); background: var(--surface); }
+.btn.nav-call { display: none; }
+@media (max-width: 359px) { .lang > .ic { display: none; } .brand img { height: 30px; } }
+@media (min-width: 720px) { .btn.nav-call { display: inline-flex; } }
+@media (min-width: 1000px) { .nav-links { display: flex; } }
 
-/* hero */
-.hero { background: linear-gradient(180deg, var(--sky-tint), #fff 85%); padding: 28px 0 36px; }
-.hero-grid { display: grid; gap: 24px; align-items: center; }
-.status { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: #fff; font-size: .9rem; font-weight: 600; }
-.status::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
-.status.is-open::before { background: var(--green); }
-.status.is-closed::before { background: var(--red); }
-h1 { font-size: clamp(1.85rem, 6vw, 2.9rem); line-height: 1.12; letter-spacing: -.015em; margin: 14px 0 6px; }
-.hero-ml { font-size: 1.12rem; font-weight: 600; margin: 0 0 10px; }
-.lead { color: var(--muted); font-size: 1.06rem; margin: 0; max-width: 36em; }
-.actions { display: grid; gap: 10px; margin-top: 22px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
-.btn { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 58px; padding: 10px 14px; border-radius: 12px; color: #fff; text-decoration: none; font-weight: 700; font-size: 1.08rem; line-height: 1.2; }
-.btn small { display: block; font-weight: 500; font-size: .82rem; opacity: .95; line-height: 1.5; white-space: nowrap; }
-.btn-call { background: var(--graphite); }
-.btn-wa { background: var(--green-ink); }
-.btn-map { background: var(--sky-ink); }
-.btn:hover { filter: brightness(1.12); }
-.btn:focus-visible, .action-bar a:focus-visible, .ask:focus-visible { outline: 3px solid #F59E0B; outline-offset: 2px; }
-.phone-line { margin: 14px 0 0; color: var(--muted); }
-.phone-line a { font-weight: 700; color: var(--graphite); }
-.hero-art { display: none; }
-@media (min-width: 860px) {
-  .hero { padding: 56px 0 44px; }
-  .hero-grid { grid-template-columns: 1.5fr 1fr; }
-  .hero-art { display: block; justify-self: center; }
-  .hero-art img { width: 300px; }
-}
+/* ---------- buttons ---------- */
+.btn { --h: 54px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: var(--h); padding: 0 22px; border-radius: 14px; border: 1px solid transparent; font: 600 1rem/1.2 var(--font-body); text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform .2s var(--ease), box-shadow .2s var(--ease), background-color .2s, border-color .2s, color .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn-sm { --h: 42px; padding: 0 16px; font-size: .92rem; border-radius: 12px; }
+.btn-primary { background: linear-gradient(135deg, var(--sky-600), var(--sky-700)); color: #fff; box-shadow: 0 12px 26px -12px rgba(15, 111, 163, .8); }
+.btn-whatsapp { background: linear-gradient(135deg, var(--green-600), var(--green-700)); color: #fff; box-shadow: 0 12px 26px -12px rgba(18, 118, 31, .8); }
+.btn-ghost { background: rgba(255, 255, 255, .06); color: #fff; border-color: rgba(255, 255, 255, .24); }
+.btn-ghost:hover { background: rgba(255, 255, 255, .12); }
+.btn-outline { background: #fff; color: var(--ink); border-color: var(--line); }
+.btn-outline:hover { border-color: var(--sky); color: var(--sky-700); }
+.btn-light { background: #fff; color: var(--ink); box-shadow: 0 12px 26px -14px rgba(0, 0, 0, .45); }
 
-/* sections */
-.section { padding: 40px 0; }
-.section.soft { background: var(--soft); }
-h2 { font-size: clamp(1.45rem, 4vw, 1.95rem); line-height: 1.2; margin: 0; }
-.h2-ml { margin: 2px 0 14px; color: var(--muted); font-weight: 600; }
-.section-lead { color: var(--muted); margin: 0 0 20px; max-width: 44em; }
-.cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); }
-.card { display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; border: 1px solid var(--line); border-left: 4px solid var(--sky); border-radius: 10px; background: #fff; }
-.card h3 { margin: 0; font-size: 1.06rem; }
-.card p { margin: 0 0 8px; color: var(--muted); font-size: .95rem; }
-.ask { margin-top: auto; color: var(--green-ink); font-weight: 700; text-decoration: none; }
-.ask:hover { text-decoration: underline; }
+/* ---------- hero ---------- */
+.hero { position: relative; overflow: hidden; padding: 56px 0 128px; color: var(--on-dark);
+  background:
+    radial-gradient(1100px 560px at 88% -12%, rgba(22, 139, 203, .38), transparent 62%),
+    radial-gradient(900px 520px at -12% 112%, rgba(22, 138, 36, .30), transparent 60%),
+    linear-gradient(180deg, var(--ink-900), var(--ink)); }
+.hero::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse at 60% 35%, #000 25%, transparent 72%); mask-image: radial-gradient(ellipse at 60% 35%, #000 25%, transparent 72%); }
+.hero-flow { position: absolute; left: 0; bottom: 30px; width: 100%; height: 62%; pointer-events: none; }
+.flow-base { fill: none; stroke: url(#flowGrad); stroke-width: 2; opacity: .35; }
+.flow-dash { fill: none; stroke: url(#flowGrad); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 2 20; animation: flow 3.2s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -220; } }
+.hero-grid { position: relative; display: grid; gap: 48px; align-items: center; }
+@media (min-width: 1000px) { .hero-grid { grid-template-columns: 1.2fr .9fr; } }
+.chip { display: inline-flex; align-items: center; gap: 10px; padding: 6px 16px 6px 6px; border-radius: 999px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .14); color: #CFE3F3; font-size: .88rem; font-weight: 500; }
+.chip-dot { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, var(--sky), var(--green)); color: #fff; }
+.chip-dot .ic { width: 14px; height: 14px; }
+.hero h1 { margin: 22px 0 18px; color: #fff; font-size: clamp(2.35rem, 6.2vw, 4.2rem); line-height: 1.04; letter-spacing: -.03em; font-weight: 800; }
+.grad { background: linear-gradient(92deg, #5CC6FF 0%, #80E39C 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-lead { max-width: 36em; color: var(--on-dark-muted); font-size: clamp(1.05rem, 1.6vw, 1.2rem); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.hero-actions .btn { flex: 1 1 100%; }
+@media (min-width: 560px) { .hero-actions .btn { flex: 0 0 auto; } }
+.trust { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 30px; padding: 0; list-style: none; color: #C7D4E3; font-size: .95rem; }
+.trust li { display: flex; align-items: center; gap: 8px; }
+.trust .ic { width: 18px; height: 18px; color: var(--green-300); }
+.hero-visual { position: relative; width: min(440px, 100%); justify-self: center; }
+.hero-visual::before { content: ""; position: absolute; right: -10%; top: -8%; width: 60%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(22, 139, 203, .45), transparent 66%); filter: blur(8px); }
+.hero-emblem { position: absolute; right: -3%; top: -2%; width: 44%; filter: drop-shadow(0 26px 50px rgba(22, 139, 203, .55)); animation: float 7s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-10px); } }
+.glass { position: relative; margin-top: 150px; padding: 26px; border-radius: 24px; background: linear-gradient(180deg, rgba(255, 255, 255, .13), rgba(255, 255, 255, .05)); border: 1px solid rgba(255, 255, 255, .16); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: var(--shadow-lg); }
+.glass h2 { color: #fff; font-size: 1.2rem; font-weight: 700; margin-bottom: 14px; }
+.glass dl { display: grid; grid-template-columns: auto 1fr; gap: 14px 16px; margin: 20px 0 22px; }
+.glass dt { display: flex; align-items: center; gap: 8px; color: #9FB3C8; font-size: .92rem; }
+.glass dt .ic { width: 17px; height: 17px; color: var(--sky-300); }
+.glass dd { color: #fff; font-weight: 600; }
+.glass dd a { color: #fff; text-decoration: none; }
+.glass .btn { width: 100%; }
+@media (max-width: 599px) { .hero-emblem, .hero-visual::before { display: none; } .glass { margin-top: 0; } }
+.status { display: inline-flex; align-items: center; gap: 9px; padding: 7px 13px; border-radius: 999px; font-size: .9rem; font-weight: 600; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .14); color: #fff; }
+.status::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #9CA3AF; flex: none; }
+.status.is-open::before { background: #34D058; box-shadow: 0 0 0 4px rgba(52, 208, 88, .2); animation: pulse 2s ease-in-out infinite; }
+.status.is-closed::before { background: #F87171; }
+.status.light { background: #fff; border-color: var(--line); color: var(--ink); }
+@keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(52, 208, 88, .06); } }
+.rise { animation: rise .8s var(--ease) both; animation-delay: calc(var(--d, 0) * 90ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } }
 
-/* electricians band */
-.band { background: var(--graphite); color: #fff; padding: 44px 0; }
-.band .h2-ml { color: #C9D3E0; }
-.band p { max-width: 42em; }
-.band-grid { display: grid; gap: 20px; align-items: center; }
-.ml-body { opacity: .92; }
-.btn-wide { width: 100%; }
-@media (min-width: 860px) { .band-grid { grid-template-columns: 1.6fr 1fr; } }
+/* ---------- stats ---------- */
+.stats { position: relative; z-index: 2; margin-top: -72px; }
+.stats-grid { display: grid; gap: 4px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); padding: 10px; border-radius: 22px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-md); list-style: none; }
+.stat { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 14px; }
+.stat-icon { width: 48px; height: 48px; flex: none; border-radius: 14px; display: grid; place-items: center; background: linear-gradient(135deg, #E6F3FB, #E8F6EA); color: var(--sky-700); }
+.stat-icon .ic { width: 24px; height: 24px; }
+.stat strong { display: block; font: 800 1.55rem/1.15 var(--font-head); color: var(--ink); }
+.stat strong small { font-size: .95rem; font-weight: 700; color: var(--muted); }
+.stat span { display: block; color: var(--muted); font-size: .92rem; line-height: 1.4; }
 
-/* hours + visit */
-.two-col { display: grid; gap: 36px; }
-@media (min-width: 860px) { .two-col { grid-template-columns: 1fr 1fr; } }
-.hours { width: 100%; border-collapse: collapse; }
-.hours th, .hours td { text-align: left; vertical-align: top; padding: 12px 10px; border-bottom: 1px solid var(--line); }
-.hours th { font-weight: 600; width: 44%; }
-.hours span { display: block; color: var(--muted); font-weight: 500; font-size: .92rem; }
-.hours tr.today { background: var(--sky-tint); }
-.hours tr.today th { box-shadow: inset 4px 0 0 var(--sky); }
-address { font-style: normal; margin: 0 0 16px; line-height: 1.6; }
-address span { display: block; color: var(--muted); margin-top: 4px; }
-.narrow { max-width: 760px; }
+/* ---------- sections ---------- */
+.section { padding: 96px 0; }
+.section.soft { background: var(--surface); }
+@media (max-width: 640px) { .section { padding: 68px 0; } }
+.section-head { max-width: 720px; margin-bottom: 44px; }
+.section-head.center { margin-inline: auto; text-align: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; color: var(--sky-600); font: 700 .78rem/1.3 var(--font-body); letter-spacing: .14em; text-transform: uppercase; }
+.eyebrow::before { content: ""; width: 24px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--sky), var(--green)); }
+.section h2 { font-size: clamp(1.85rem, 3.8vw, 2.75rem); line-height: 1.1; letter-spacing: -.02em; font-weight: 800; }
+.section-head p { margin-top: 14px; color: var(--muted); font-size: 1.08rem; }
+
+/* products */
+.products { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 255px), 1fr)); padding: 0; list-style: none; }
+.product { position: relative; display: flex; flex-direction: column; padding: 24px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-sm); overflow: hidden; transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s; }
+.product::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: linear-gradient(90deg, var(--sky), var(--green)); transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+.product:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--line-strong); }
+.product:hover::after { transform: scaleX(1); }
+.product-icon { width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; margin-bottom: 18px; background: linear-gradient(135deg, #E6F3FB, #E8F6EA); color: var(--sky-700); transition: transform .3s var(--ease); }
+.product:hover .product-icon { transform: scale(1.06) rotate(-3deg); }
+.product-icon .ic { width: 27px; height: 27px; stroke-width: 1.75; }
+.product h3 { font-size: 1.16rem; font-weight: 700; margin-bottom: 6px; }
+.product p { color: var(--muted); font-size: .95rem; margin-bottom: 16px; }
+.ask { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--green-600); font-weight: 600; text-decoration: none; }
+.ask::before { content: ""; position: absolute; inset: 0; }
+.ask .ic { width: 18px; height: 18px; transition: transform .2s var(--ease); }
+.product:hover .ask .ic { transform: translateX(4px); }
+.products-note { margin-top: 28px; text-align: center; color: var(--muted); }
+.products-note a { color: var(--green-600); font-weight: 600; }
+
+/* electricians */
+.trade { position: relative; overflow: hidden; color: var(--on-dark-muted);
+  background: radial-gradient(800px 420px at 100% 0%, rgba(22, 139, 203, .28), transparent 60%), radial-gradient(700px 420px at 0% 100%, rgba(22, 138, 36, .22), transparent 60%), var(--ink-900); }
+.trade::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(255, 255, 255, .09) 1px, transparent 1px); background-size: 22px 22px; -webkit-mask-image: linear-gradient(180deg, #000, transparent 85%); mask-image: linear-gradient(180deg, #000, transparent 85%); }
+.trade .wrap { position: relative; }
+.trade h2 { color: #fff; }
+.trade .eyebrow { color: var(--sky-300); }
+.trade .section-head p { color: var(--on-dark-muted); }
+.steps { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); padding: 0; list-style: none; counter-reset: step; }
+.step { position: relative; counter-increment: step; padding: 28px; border-radius: 20px; background: rgba(255, 255, 255, .045); border: 1px solid rgba(255, 255, 255, .10); transition: border-color .25s, background-color .25s; }
+.step:hover { border-color: rgba(124, 199, 238, .4); background: rgba(255, 255, 255, .07); }
+.step::after { content: counter(step, decimal-leading-zero); position: absolute; top: 20px; right: 24px; font: 800 2.6rem/1 var(--font-head); color: rgba(255, 255, 255, .07); }
+.step-icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 18px; background: linear-gradient(135deg, var(--sky-600), var(--green-600)); color: #fff; }
+.step-icon .ic { width: 24px; height: 24px; }
+.step h3 { color: #fff; font-size: 1.18rem; margin-bottom: 8px; }
+.trade-cta { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 22px; }
+.trade-cta p { color: #9FB3C8; }
+.trade-cta p a { color: #fff; font-weight: 600; }
+
+/* visit */
+.visit-grid { display: grid; gap: 24px; }
+@media (min-width: 1000px) { .visit-grid { grid-template-columns: .95fr 1.05fr; } }
+.info-card { padding: 28px; border-radius: 22px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+.info-card h3 { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 700; }
+.info-card h3 .ic { color: var(--sky-600); }
+.info-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.hours-list { list-style: none; padding: 0; margin: 18px 0 8px; }
+.hours-list li { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 12px; }
+.hours-list li + li { margin-top: 4px; }
+.hours-list li.today { background: var(--sky-50); box-shadow: inset 3px 0 0 var(--sky); }
+.hours-list .day { font-weight: 600; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.hours-list .time { color: var(--muted); text-align: right; }
+.today-tag { display: none; padding: 2px 9px; border-radius: 999px; background: #fff; border: 1px solid var(--line-strong); color: var(--sky-700); font-size: .72rem; font-weight: 700; letter-spacing: .04em; }
+li.today .today-tag { display: inline-block; }
+.address { display: flex; gap: 14px; margin-top: 16px; padding-top: 20px; border-top: 1px solid var(--line); }
+.address-icon { width: 44px; height: 44px; flex: none; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(135deg, #E6F3FB, #E8F6EA); color: var(--sky-700); }
+.address strong { display: block; margin-bottom: 4px; }
+.address p { color: var(--muted); }
+.info-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.info-actions .btn { flex: 1 1 200px; }
+.map-frame { position: relative; min-height: 360px; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); background: #E8EEF4; box-shadow: var(--shadow-md); }
+.map-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map-open { position: absolute; right: 14px; top: 14px; }
+
+/* story */
+.story-grid { display: grid; gap: 44px; }
+@media (min-width: 1000px) { .story-grid { grid-template-columns: 1fr 1fr; align-items: center; } }
+.story-text p { color: var(--muted); font-size: 1.08rem; margin-top: 16px; }
+.timeline { position: relative; list-style: none; padding: 0; }
+.timeline::before { content: ""; position: absolute; left: 21px; top: 10px; bottom: 10px; width: 2px; background: linear-gradient(var(--sky), var(--green)); border-radius: 2px; }
+.timeline li { position: relative; padding: 0 0 30px 66px; }
+.timeline li:last-child { padding-bottom: 0; }
+.node { position: absolute; left: 0; top: 0; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: #fff; border: 2px solid var(--sky); color: var(--sky-700); box-shadow: 0 0 0 6px var(--surface); }
+.timeline li:last-child .node { border-color: var(--green); color: var(--green-600); }
+.node .ic { width: 20px; height: 20px; }
+.tl-year { font: 800 1.3rem/1.2 var(--font-head); }
+.timeline p { color: var(--muted); margin-top: 4px; }
+
+/* faq */
+.faq { max-width: 820px; margin-inline: auto; }
+.faq details { margin-bottom: 12px; border-radius: 16px; background: #fff; border: 1px solid var(--line); transition: border-color .2s, box-shadow .2s; }
+.faq details[open] { border-color: var(--line-strong); box-shadow: var(--shadow-sm); }
+.faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 16px 20px; font-weight: 600; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .ic { color: var(--sky-600); transition: transform .25s var(--ease); }
+.faq details[open] summary .ic { transform: rotate(180deg); }
+.faq .answer { padding: 0 20px 20px; color: var(--muted); }
+
+/* call to action */
+.cta { padding-bottom: 96px; }
+.cta-box { position: relative; overflow: hidden; display: grid; gap: 26px; align-items: center; padding: 44px 28px; border-radius: 28px; color: #fff; background: linear-gradient(120deg, var(--sky-700) 0%, var(--sky-600) 48%, var(--green-600) 100%); box-shadow: var(--shadow-lg); }
+.cta-box::before { content: ""; position: absolute; right: -80px; top: -120px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, .22), transparent 65%); }
+.cta-box > * { position: relative; }
+.cta-box h2 { color: #fff; font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height: 1.15; }
+.cta-box p { margin-top: 10px; color: rgba(255, 255, 255, .9); font-size: 1.08rem; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+@media (min-width: 900px) { .cta-box { grid-template-columns: 1.3fr 1fr; padding: 56px; } .cta-actions { justify-content: flex-end; } }
 
 /* footer */
-.site-footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: .88rem; }
-.site-footer p { margin: 4px 0; }
+.footer { padding: 68px 0 30px; background: var(--ink-900); color: #9FB0C3; font-size: .95rem; }
+.footer-grid { display: grid; gap: 36px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.footer-logo { display: inline-flex; padding: 12px 16px; border-radius: 14px; background: #fff; }
+.footer-logo img { height: 34px; width: auto; }
+.footer-brand p { margin-top: 16px; max-width: 30ch; }
+.footer h3 { margin-bottom: 14px; color: #fff; font: 700 .82rem/1.3 var(--font-body); letter-spacing: .12em; text-transform: uppercase; }
+.footer ul { list-style: none; padding: 0; }
+.footer li + li { margin-top: 10px; }
+.footer li { display: flex; gap: 10px; align-items: flex-start; }
+.footer li .ic { width: 18px; height: 18px; margin-top: 3px; color: var(--sky-300); }
+.footer a { color: #D3DDE8; text-decoration: none; }
+.footer a:hover { color: #fff; text-decoration: underline; }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; margin-top: 48px; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, .08); color: #8193A8; font-size: .86rem; }
+.tagline { color: var(--sky-300); font-weight: 600; }
 
-/* contact bar fixed to the bottom on phones */
-.action-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--line); box-shadow: 0 -4px 16px rgba(17, 24, 39, .08); transition: transform .2s ease; }
-.action-bar a { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; border-radius: 10px; color: #fff; font-weight: 700; text-decoration: none; font-size: .95rem; }
-.bar-call { background: var(--graphite); }
-.bar-wa { background: var(--green-ink); }
-.bar-map { background: var(--sky-ink); }
-.action-bar.is-hidden { transform: translateY(110%); }
-@media (min-width: 860px) { .action-bar { display: none; } body { padding-bottom: 0; } }
-@media (prefers-reduced-motion: reduce) { .action-bar { transition: none; } }
+/* contact bar on phones, WhatsApp button on large screens */
+.mbar { position: fixed; left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 60; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 6px; border-radius: 20px; background: rgba(11, 18, 32, .92); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 20px 44px -14px rgba(0, 0, 0, .55); transition: transform .35s var(--ease), opacity .35s var(--ease); }
+.mbar a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 14px; color: #fff; font-size: .8rem; font-weight: 600; text-decoration: none; }
+.mbar .m-call { background: linear-gradient(135deg, var(--sky-600), var(--sky-700)); }
+.mbar .m-wa { background: linear-gradient(135deg, var(--green-600), var(--green-700)); }
+.mbar .m-map { background: rgba(255, 255, 255, .09); }
+.mbar.is-hidden { transform: translateY(150%); opacity: 0; pointer-events: none; }
+.fab { display: none; }
+@media (min-width: 1000px) {
+  body { padding-bottom: 0; }
+  .mbar { display: none; }
+  .fab { position: fixed; right: 24px; bottom: 24px; z-index: 60; display: inline-flex; align-items: center; gap: 10px; height: 58px; padding: 0 22px 0 18px; border-radius: 999px; background: linear-gradient(135deg, var(--green-600), var(--green-700)); color: #fff; font-weight: 600; text-decoration: none; box-shadow: 0 18px 38px -14px rgba(18, 118, 31, .8); transition: transform .25s var(--ease), opacity .25s var(--ease); }
+  .fab:hover { transform: translateY(-3px); }
+  .fab.is-hidden { opacity: 0; transform: translateY(16px); pointer-events: none; }
+  .fab .ic { width: 24px; height: 24px; }
+}
+
+/* scroll-in animation (only when JavaScript runs) */
+html.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); transition-delay: calc(var(--d, 0) * 70ms); }
+html.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html.js .reveal { opacity: 1; transform: none; }
+}
 </style>
 </head>
 <body>
-<!-- Icons: Feather Icons (MIT licence) -->
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+<!-- Icons: Lucide (ISC licence, lucide.dev) and Simple Icons WhatsApp glyph (CC0) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
-  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-cable" viewBox="0 0 24 24"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"/><path d="M17 21v-2"/><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"/><path d="M21 21v-2"/><path d="M3 5V3"/><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"/><path d="M7 5V3"/></symbol>
+<symbol id="i-toggle" viewBox="0 0 24 24"><circle cx="15" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="7"/></symbol>
+<symbol id="i-circuit" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M11 9h4a2 2 0 0 0 2-2V3"/><circle cx="9" cy="9" r="2"/><path d="M7 21v-4a2 2 0 0 1 2-2h4"/><circle cx="15" cy="15" r="2"/></symbol>
+<symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+<symbol id="i-fan" viewBox="0 0 24 24"><path d="M10.827 16.379a6.082 6.082 0 0 1-8.618-7.002l5.412 1.45a6.082 6.082 0 0 1 7.002-8.618l-1.45 5.412a6.082 6.082 0 0 1 8.618 7.002l-5.412-1.45a6.082 6.082 0 0 1-7.002 8.618l1.45-5.412Z"/><path d="M12 12v.01"/></symbol>
+<symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+<symbol id="i-plug" viewBox="0 0 24 24"><path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z"/><path d="m2 22 3-3"/><path d="M7.5 13.5 10 11"/><path d="M10.5 16.5 13 14"/><path d="m18 3-4 4h6l-4 4"/></symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="i-languages" viewBox="0 0 24 24"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 9-5.5 5.5L8 12"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+<symbol id="i-nav" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></symbol>
+<symbol id="i-list" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
+<symbol id="i-listcheck" viewBox="0 0 24 24"><path d="M13 5h8"/><path d="M13 12h8"/><path d="M13 19h8"/><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/></symbol>
+<symbol id="i-package" viewBox="0 0 24 24"><path d="M12 22V12"/><path d="m16 17 2 2 4-4"/><path d="M21 11.127V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.729l7 4a2 2 0 0 0 2 .001l1.32-.753"/><path d="M3.29 7 12 12l8.71-5"/><path d="m7.5 4.27 8.997 5.148"/></symbol>
+<symbol id="i-store" viewBox="0 0 24 24"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"/><path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"/><path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"/></symbol>
+<symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></symbol>
+<symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
 </svg>
 
-<header class="site-header">
-  <div class="wrap header-row">
-    <a class="brand" href="./"><img src="assets/logo-header.png" width="168" height="40" alt="DIYI-PATH – Energy &amp; Technology Solutions"></a>
-    <p class="former">formerly <strong>Kerala Electricals</strong><span lang="ml">പഴയ പേര്: കേരള ഇലക്ട്രിക്കൽസ്</span></p>
+<header class="site-header" id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top"><img src="assets/logo-header.png" width="151" height="36" alt="DIYI-PATH – Energy &amp; Technology Solutions"></a>
+    <ul class="nav-links">
+      <li><a href="#products" data-i18n="nav.products">Products</a></li>
+      <li><a href="#electricians" data-i18n="nav.trade">For electricians</a></li>
+      <li><a href="#visit" data-i18n="nav.visit">Visit us</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+    </ul>
+    <div class="lang" role="group" aria-label="Language" data-i18n-attr="aria-label:lang.label">
+      <svg class="ic" aria-hidden="true"><use href="#i-languages"/></svg>
+      <button type="button" data-set-lang="en" aria-pressed="true" lang="en">EN</button>
+      <button type="button" data-set-lang="ml" aria-pressed="false" lang="ml">മലയാളം</button>
+    </div>
+    <a class="btn btn-primary btn-sm nav-call" href="tel:+919495426446"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="nav.call">Call now</span></a>
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="hero">
+    <svg class="hero-flow" viewBox="0 0 1440 560" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="flowGrad" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stop-color="#168BCB" stop-opacity="0"/>
+          <stop offset=".3" stop-color="#3FB0EC"/>
+          <stop offset=".72" stop-color="#3CC45A"/>
+          <stop offset="1" stop-color="#168A24" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path class="flow-base" vector-effect="non-scaling-stroke" d="M-40 500 C 260 500 380 250 660 262 S 1080 480 1480 210"/>
+      <path class="flow-dash" vector-effect="non-scaling-stroke" d="M-40 500 C 260 500 380 250 660 262 S 1080 480 1480 210"/>
+      <path class="flow-base" vector-effect="non-scaling-stroke" d="M-40 540 C 300 540 470 330 760 340 S 1180 520 1480 300" style="opacity:.18"/>
+    </svg>
     <div class="wrap hero-grid">
       <div>
-        <p class="status" id="open-status">Mon–Sat · 8:30 AM – 9:00 PM</p>
-        <h1>Your electrical shop at 6th Mile, Kumily</h1>
-        <p class="hero-ml" lang="ml">ആറാം മൈലിലെ നിങ്ങളുടെ ഇലക്ട്രിക്കൽ കട — 2008 മുതൽ</p>
-        <p class="lead">Wires, switches, lights, fans and fittings for homes, shops and electricians — from the same trusted shop since 2008.</p>
-        <div class="actions" id="hero-actions">
-          <a class="btn btn-call" href="tel:+919495426446"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span>Call now<small lang="ml">വിളിക്കുക</small></span></a>
-          <a class="btn btn-wa" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg><span>WhatsApp<small lang="ml">വാട്സ്ആപ്പ് ചെയ്യുക</small></span></a>
-          <a class="btn btn-map" href="https://maps.app.goo.gl/uQAgdNReKTRCJRX48" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span>Directions<small lang="ml">വഴി കാണുക</small></span></a>
+        <span class="chip rise" style="--d:0"><span class="chip-dot"><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg></span><span data-i18n="hero.chip">6th Mile, Kumily · Since 2008</span></span>
+        <h1 class="rise" style="--d:1" data-i18n="hero.title">Your trusted <span class="grad">electrical store</span> at 6th&nbsp;Mile, Kumily</h1>
+        <p class="hero-lead rise" style="--d:2" data-i18n="hero.lead">Wires, switches, lighting, fans and fittings for homes, shops and electricians. Formerly Kerala Electricals — the same shop and the same trust, with a new name.</p>
+        <div class="hero-actions rise" style="--d:3" id="hero-actions">
+          <a class="btn btn-primary" href="tel:+919495426446"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="btn.call">Call now</span></a>
+          <a class="btn btn-whatsapp" data-wa="hello" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20" target="_blank" rel="noopener"><svg class="ic ic-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="btn.whatsapp">WhatsApp us</span></a>
+          <a class="btn btn-ghost" href="https://maps.app.goo.gl/uQAgdNReKTRCJRX48" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-nav"/></svg><span data-i18n="btn.directions">Get directions</span></a>
         </div>
-        <p class="phone-line">Phone: <a href="tel:+919495426446">+91 94954 26446</a></p>
+        <ul class="trust rise" style="--d:4">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="trust.1">Serving since 2008</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="trust.2">Open 6 days a week</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="trust.3">Enquire on WhatsApp</span></li>
+        </ul>
       </div>
-      <picture class="hero-art">
-        <source srcset="assets/emblem-hero.webp" type="image/webp">
-        <img src="assets/emblem-hero.png" width="440" height="440" alt="">
-      </picture>
+      <div class="hero-visual rise" style="--d:3">
+        <picture>
+          <source srcset="assets/emblem-hero.webp" type="image/webp">
+          <img class="hero-emblem" src="assets/emblem-hero.png" width="440" height="440" alt="">
+        </picture>
+        <div class="glass">
+          <h2 data-i18n="card.title">Visit us today</h2>
+          <p class="status js-status">Mon–Sat · 8:30 AM – 9:00 PM</p>
+          <dl>
+            <dt><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="card.today">Today</span></dt>
+            <dd id="today-hours" data-i18n="hours.monsat.time">8:30 AM – 9:00 PM</dd>
+            <dt><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="card.phone">Phone</span></dt>
+            <dd><a href="tel:+919495426446">+91 94954 26446</a></dd>
+            <dt><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="card.address">Address</span></dt>
+            <dd data-i18n="card.addressShort">6th Mile, Kumily, Idukki</dd>
+          </dl>
+          <a class="btn btn-light" href="https://maps.app.goo.gl/uQAgdNReKTRCJRX48" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-nav"/></svg><span data-i18n="btn.directions">Get directions</span></a>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="stats">
+    <div class="wrap">
+      <ul class="stats-grid">
+        <li class="stat reveal"><span class="stat-icon"><svg class="ic" aria-hidden="true"><use href="#i-history"/></svg></span><span><strong>18+ <small data-i18n="stat1.unit">years</small></strong><span data-i18n="stat1.label">Serving 6th Mile since 2008</span></span></li>
+        <li class="stat reveal" style="--d:1"><span class="stat-icon"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span><span><strong>6 <small data-i18n="stat2.unit">days</small></strong><span data-i18n="stat2.label">Open Monday to Saturday</span></span></li>
+        <li class="stat reveal" style="--d:2"><span class="stat-icon"><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg></span><span><strong>8 <small data-i18n="stat3.unit">ranges</small></strong><span data-i18n="stat3.label">Of everyday electrical items</span></span></li>
+        <li class="stat reveal" style="--d:3"><span class="stat-icon"><svg class="ic ic-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg></span><span><strong>WhatsApp</strong><span data-i18n="stat4.label">Check stock and price first</span></span></li>
+      </ul>
+    </div>
+  </div>
 
   <section class="section" id="products" aria-labelledby="products-title">
     <div class="wrap">
-      <h2 id="products-title">What we sell</h2>
-      <p class="h2-ml" lang="ml">ലഭ്യമായ സാധനങ്ങൾ</p>
-      <p class="section-lead">Everyday electrical items for homes, shops and wiring jobs. Ask us on WhatsApp before you come and we'll tell you what's in stock.</p>
-      <ul class="cards">
-        <li class="card"><h3>Wires &amp; cables</h3><p lang="ml">വയറുകളും കേബിളുകളും</p><a class="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%20wires%20%26%20cables" target="_blank" rel="noopener">Ask on WhatsApp →</a></li>
-        <li class="card"><h3>Switches &amp; sockets</h3><p lang="ml">സ്വിച്ചുകളും സോക്കറ്റുകളും</p><a class="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%20switches%20%26%20sockets" target="_blank" rel="noopener">Ask on WhatsApp →</a></li>
-        <li class="card"><h3>MCBs &amp; distribution boards</h3><p lang="ml">MCB, ഡിസ്ട്രിബ്യൂഷൻ ബോർഡുകൾ</p><a class="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%20MCBs%20%26%20distribution%20boards" target="_blank" rel="noopener">Ask on WhatsApp →</a></li>
-        <li class="card"><h3>LED lights &amp; fittings</h3><p lang="ml">LED ലൈറ്റുകളും ഫിറ്റിംഗുകളും</p><a class="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%20LED%20lights%20%26%20fittings" target="_blank" rel="noopener">Ask on WhatsApp →</a></li>
-        <li class="card"><h3>Fans</h3><p lang="ml">ഫാനുകൾ</p><a class="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%20fans" target="_blank" rel="noopener">Ask on WhatsApp →</a></li>
-        <li class="card"><h3>PVC pipes &amp; accessories</h3><p lang="ml">PVC പൈപ്പുകളും അനുബന്ധ സാധനങ്ങളും</p><a class="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%20PVC%20pipes%20%26%20accessories" target="_blank" rel="noopener">Ask on WhatsApp →</a></li>
-        <li class="card"><h3>Plugs, holders &amp; extension boards</h3><p lang="ml">പ്ലഗ്, ഹോൾഡർ, എക്സ്റ്റൻഷൻ ബോർഡുകൾ</p><a class="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%20plugs%2C%20holders%20%26%20extension%20boards" target="_blank" rel="noopener">Ask on WhatsApp →</a></li>
-        <li class="card"><h3>Tools, tapes &amp; small items</h3><p lang="ml">ടൂളുകൾ, ടേപ്പ്, ചെറിയ സാധനങ്ങൾ</p><a class="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%20tools%20%26%20small%20items" target="_blank" rel="noopener">Ask on WhatsApp →</a></li>
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="products.eyebrow">What we stock</span>
+        <h2 id="products-title" data-i18n="products.title">Everything for your electrical work, in one place</h2>
+        <p data-i18n="products.lead">Everyday electrical items for homes, shops and wiring jobs. Ask us on WhatsApp before you come and we'll tell you what's in stock.</p>
+      </div>
+      <ul class="products">
+        <li class="product reveal"><span class="product-icon"><svg class="ic" aria-hidden="true"><use href="#i-cable"/></svg></span><h3 data-i18n="p1.title">Wires &amp; cables</h3><p data-i18n="p1.desc">For house wiring and connections.</p><a class="ask" data-wa="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%3A%20Wires%20%26%20cables" target="_blank" rel="noopener"><span data-i18n="product.ask">Ask on WhatsApp</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li class="product reveal" style="--d:1"><span class="product-icon"><svg class="ic" aria-hidden="true"><use href="#i-toggle"/></svg></span><h3 data-i18n="p2.title">Switches &amp; sockets</h3><p data-i18n="p2.desc">Switches, sockets and plates for every room.</p><a class="ask" data-wa="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%3A%20Switches%20%26%20sockets" target="_blank" rel="noopener"><span data-i18n="product.ask">Ask on WhatsApp</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li class="product reveal" style="--d:2"><span class="product-icon"><svg class="ic" aria-hidden="true"><use href="#i-circuit"/></svg></span><h3 data-i18n="p3.title">MCBs &amp; distribution boards</h3><p data-i18n="p3.desc">Safety and protection for your wiring.</p><a class="ask" data-wa="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%3A%20MCBs%20%26%20distribution%20boards" target="_blank" rel="noopener"><span data-i18n="product.ask">Ask on WhatsApp</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li class="product reveal" style="--d:3"><span class="product-icon"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg></span><h3 data-i18n="p4.title">LED lights &amp; fittings</h3><p data-i18n="p4.desc">Bulbs, tubes, panels and fittings.</p><a class="ask" data-wa="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%3A%20LED%20lights%20%26%20fittings" target="_blank" rel="noopener"><span data-i18n="product.ask">Ask on WhatsApp</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li class="product reveal"><span class="product-icon"><svg class="ic" aria-hidden="true"><use href="#i-fan"/></svg></span><h3 data-i18n="p5.title">Fans</h3><p data-i18n="p5.desc">Fans and fan accessories.</p><a class="ask" data-wa="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%3A%20Fans" target="_blank" rel="noopener"><span data-i18n="product.ask">Ask on WhatsApp</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li class="product reveal" style="--d:1"><span class="product-icon"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg></span><h3 data-i18n="p6.title">PVC pipes &amp; accessories</h3><p data-i18n="p6.desc">Conduit pipes, bends and boxes.</p><a class="ask" data-wa="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%3A%20PVC%20pipes%20%26%20accessories" target="_blank" rel="noopener"><span data-i18n="product.ask">Ask on WhatsApp</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li class="product reveal" style="--d:2"><span class="product-icon"><svg class="ic" aria-hidden="true"><use href="#i-plug"/></svg></span><h3 data-i18n="p7.title">Plugs, holders &amp; extension boards</h3><p data-i18n="p7.desc">Everyday plugs, holders and multi-plugs.</p><a class="ask" data-wa="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%3A%20Plugs%2C%20holders%20%26%20extension%20boards" target="_blank" rel="noopener"><span data-i18n="product.ask">Ask on WhatsApp</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li class="product reveal" style="--d:3"><span class="product-icon"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg></span><h3 data-i18n="p8.title">Tools, tapes &amp; small items</h3><p data-i18n="p8.desc">Testers, tape, clips, screws and more.</p><a class="ask" data-wa="ask" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20I%20want%20to%20ask%20about%3A%20Tools%2C%20tapes%20%26%20small%20items" target="_blank" rel="noopener"><span data-i18n="product.ask">Ask on WhatsApp</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
       </ul>
+      <p class="products-note reveal" data-i18n="products.note">Don't see what you need? <a data-wa="hello" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20" target="_blank" rel="noopener">Send us a message</a> and we'll tell you if we have it.</p>
     </div>
   </section>
 
-  <section class="band" id="electricians" aria-labelledby="electricians-title">
-    <div class="wrap band-grid">
-      <div>
-        <h2 id="electricians-title">For electricians &amp; contractors</h2>
-        <p class="h2-ml" lang="ml">ഇലക്ട്രീഷ്യൻമാർക്കും കോൺട്രാക്ടർമാർക്കും</p>
-        <p>Working on a wiring job? Send your material list on WhatsApp. We'll check stock and reply with prices, so everything is ready when you come.</p>
-        <p class="ml-body" lang="ml">വയറിംഗ് ജോലിക്കുള്ള സാധനങ്ങളുടെ ലിസ്റ്റ് വാട്സ്ആപ്പിൽ അയക്കൂ. സ്റ്റോക്കും വിലയും നോക്കി ഞങ്ങൾ മറുപടി തരാം; നിങ്ങൾ വരുമ്പോൾ എല്ലാം തയ്യാറായിരിക്കും.</p>
+  <section class="section trade" id="electricians" aria-labelledby="trade-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="trade.eyebrow">For electricians &amp; contractors</span>
+        <h2 id="trade-title" data-i18n="trade.title">Send your list. We'll get it ready.</h2>
+        <p data-i18n="trade.lead">Working on a wiring job? Save time with a simple WhatsApp order.</p>
       </div>
-      <a class="btn btn-wa btn-wide" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20here%20is%20my%20material%20list%20for%20a%20wiring%20job%3A%0A" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg><span>Send your list on WhatsApp<small lang="ml">ലിസ്റ്റ് അയക്കുക</small></span></a>
-    </div>
-  </section>
-
-  <section class="section" id="hours" aria-labelledby="hours-title">
-    <div class="wrap two-col">
-      <div>
-        <h2 id="hours-title">Opening hours</h2>
-        <p class="h2-ml" lang="ml">പ്രവർത്തന സമയം</p>
-        <table class="hours">
-          <tr data-day="monsat"><th scope="row">Monday – Saturday<span lang="ml">തിങ്കൾ – ശനി</span></th><td>8:30 AM – 9:00 PM<span lang="ml">രാവിലെ 8:30 – രാത്രി 9:00</span></td></tr>
-          <tr data-day="sun"><th scope="row">Sunday<span lang="ml">ഞായർ</span></th><td>Closed — call us for emergencies<span lang="ml">അവധി — അത്യാവശ്യത്തിന് വിളിക്കുക</span></td></tr>
-        </table>
-      </div>
-      <div id="visit">
-        <h2>Visit the shop</h2>
-        <p class="h2-ml" lang="ml">കടയിലേക്ക് വരൂ</p>
-        <address>
-          DIYI-PATH (formerly Kerala Electricals)<br>
-          6th Mile, Kumily, Chakkupallam, Kungiripetty<br>
-          Idukki, Kerala 685509
-          <span lang="ml">ആറാം മൈൽ, കുമളി, ഇടുക്കി</span>
-        </address>
-        <a class="btn btn-map btn-wide" href="https://maps.app.goo.gl/uQAgdNReKTRCJRX48" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span>Open in Google Maps<small lang="ml">വഴി കാണുക</small></span></a>
+      <ol class="steps">
+        <li class="step reveal"><span class="step-icon"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></span><h3 data-i18n="step1.title">Send your material list</h3><p data-i18n="step1.desc">Type it, or send a photo of your list, on WhatsApp.</p></li>
+        <li class="step reveal" style="--d:1"><span class="step-icon"><svg class="ic" aria-hidden="true"><use href="#i-listcheck"/></svg></span><h3 data-i18n="step2.title">We check stock and prices</h3><p data-i18n="step2.desc">We reply with what's available and the total.</p></li>
+        <li class="step reveal" style="--d:2"><span class="step-icon"><svg class="ic" aria-hidden="true"><use href="#i-package"/></svg></span><h3 data-i18n="step3.title">Pick it up, ready to go</h3><p data-i18n="step3.desc">Everything is ready when you come.</p></li>
+      </ol>
+      <div class="trade-cta reveal">
+        <a class="btn btn-whatsapp" data-wa="list" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20here%20is%20my%20material%20list%20for%20a%20wiring%20job%3A%0A" target="_blank" rel="noopener"><svg class="ic ic-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="trade.cta">Send your list on WhatsApp</span></a>
+        <p data-i18n="trade.note">Or call us on <a href="tel:+919495426446">+91 94954 26446</a></p>
       </div>
     </div>
   </section>
 
-  <section class="section soft" id="about" aria-labelledby="about-title">
-    <div class="wrap narrow">
-      <h2 id="about-title">About us</h2>
-      <p class="h2-ml" lang="ml">ഞങ്ങളെക്കുറിച്ച്</p>
-      <p>Kerala Electricals has served 6th Mile and the nearby areas since 2008. We are now <strong>DIYI-PATH</strong> — the same shop, the same owner and the same honest service, with a new name.</p>
-      <p class="ml-body" lang="ml">2008 മുതൽ ആറാം മൈലിലും പരിസര പ്രദേശങ്ങളിലും കേരള ഇലക്ട്രിക്കൽസ് സേവനം നൽകുന്നു. ഇനി ഞങ്ങൾ DIYI-PATH — അതേ കട, അതേ ഉടമ, അതേ വിശ്വാസം; പുതിയ പേരിൽ.</p>
+  <section class="section" id="visit" aria-labelledby="visit-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="visit.eyebrow">Visit us</span>
+        <h2 id="visit-title" data-i18n="visit.title">Find us at 6th Mile, Kumily</h2>
+      </div>
+      <div class="visit-grid">
+        <div class="info-card reveal">
+          <div class="info-top">
+            <h3><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="hours.title">Opening hours</span></h3>
+            <p class="status light js-status">Mon–Sat · 8:30 AM – 9:00 PM</p>
+          </div>
+          <ul class="hours-list">
+            <li data-day="monsat"><span class="day"><span data-i18n="hours.monsat.day">Monday – Saturday</span><span class="today-tag" data-i18n="today.tag">Today</span></span><span class="time" data-i18n="hours.monsat.time">8:30 AM – 9:00 PM</span></li>
+            <li data-day="sun"><span class="day"><span data-i18n="hours.sun.day">Sunday</span><span class="today-tag" data-i18n="today.tag">Today</span></span><span class="time" data-i18n="hours.sun.time">Closed · call for emergencies</span></li>
+          </ul>
+          <div class="address">
+            <span class="address-icon"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span>
+            <div><strong data-i18n="visit.addressLabel">Address</strong><p data-i18n="visit.address">DIYI-PATH (formerly Kerala Electricals)<br>6th Mile, Kumily, Chakkupallam, Kungiripetty<br>Idukki, Kerala 685509</p></div>
+          </div>
+          <div class="info-actions">
+            <a class="btn btn-primary" href="tel:+919495426446"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="btn.call">Call now</span></a>
+            <a class="btn btn-outline" href="https://maps.app.goo.gl/uQAgdNReKTRCJRX48" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-nav"/></svg><span data-i18n="btn.directions">Get directions</span></a>
+          </div>
+        </div>
+        <div class="map-frame reveal" style="--d:1">
+          <iframe title="Map showing DIYI-PATH at 6th Mile, Kumily" data-i18n-attr="title:map.title" src="https://maps.google.com/maps?q=9.647295,77.164851&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a class="btn btn-light btn-sm map-open" href="https://maps.app.goo.gl/uQAgdNReKTRCJRX48" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="map.open">Open in Google Maps</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft" id="story" aria-labelledby="story-title">
+    <div class="wrap story-grid">
+      <div class="story-text reveal">
+        <span class="eyebrow" data-i18n="story.eyebrow">Our story</span>
+        <h2 id="story-title" data-i18n="story.title">18 years at 6th Mile. A new name for the next chapter.</h2>
+        <p data-i18n="story.p1">Kerala Electricals has served 6th Mile and the nearby areas since 2008. Today we are DIYI-PATH — the same shop, the same owner and the same honest service, with a new name and a fresh look.</p>
+      </div>
+      <ol class="timeline reveal" style="--d:1">
+        <li><span class="node"><svg class="ic" aria-hidden="true"><use href="#i-store"/></svg></span><div class="tl-year">2008</div><p data-i18n="tl1.text">Kerala Electricals opens at 6th Mile</p></li>
+        <li><span class="node"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><div class="tl-year" data-i18n="tl2.year">Every day</div><p data-i18n="tl2.text">Serving homes, shops and electricians across 6th Mile and nearby</p></li>
+        <li><span class="node"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg></span><div class="tl-year">2026</div><p data-i18n="tl3.text">A new name: DIYI-PATH — same shop, same owner, same trust</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow" data-i18n="faq.eyebrow">Questions</span>
+        <h2 id="faq-title" data-i18n="faq.title">Good to know</h2>
+      </div>
+      <div class="faq">
+        <details class="reveal"><summary><span data-i18n="q1">Is DIYI-PATH the same shop as Kerala Electricals?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><p class="answer" data-i18n="a1">Yes. Same shop, same owner, same place at 6th Mile — only the name has changed.</p></details>
+        <details class="reveal"><summary><span data-i18n="q2">Are you open on Sundays?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><p class="answer" data-i18n="a2">We're closed on Sundays. For emergencies, please call us.</p></details>
+        <details class="reveal"><summary><span data-i18n="q3">Can I check stock and prices before I come?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><p class="answer" data-i18n="a3">Yes. Send us a WhatsApp message with what you need and we'll reply with availability and price.</p></details>
+        <details class="reveal"><summary><span data-i18n="q4">Can electricians send a full material list?</span><svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><p class="answer" data-i18n="a4">Of course. Send the list, or a photo of it, on WhatsApp. We'll check everything and have it ready when you come.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="cta-box reveal">
+        <div>
+          <h2 id="cta-title" data-i18n="cta.title">Need something today?</h2>
+          <p data-i18n="cta.lead">Call or WhatsApp us — we're happy to help.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-light" href="tel:+919495426446"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span>+91 94954 26446</span></a>
+          <a class="btn btn-ghost" data-wa="hello" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20" target="_blank" rel="noopener"><svg class="ic ic-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="btn.whatsapp">WhatsApp us</span></a>
+        </div>
+      </div>
     </div>
   </section>
 </main>
 
-<footer class="site-footer">
+<footer class="footer">
   <div class="wrap">
-    <p><strong>DIYI-PATH</strong> · Powering the right path</p>
-    <p>Registered under GST as Kerala Electricals · GSTIN 32BLCPJ2525D1ZT · Composition taxable person</p>
-    <p>© 2026 DIYI-PATH · 6th Mile, Kumily, Idukki, Kerala</p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo"><img src="assets/logo-header.png" width="143" height="34" alt="DIYI-PATH" loading="lazy"></span>
+        <p data-i18n="footer.blurb">Electrical supplies at 6th Mile, Kumily. Formerly Kerala Electricals — serving since 2008.</p>
+      </div>
+      <div>
+        <h3 data-i18n="footer.contact">Contact</h3>
+        <ul>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+919495426446">+91 94954 26446</a></li>
+          <li><svg class="ic ic-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg><a data-wa="hello" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><a href="https://maps.app.goo.gl/uQAgdNReKTRCJRX48" target="_blank" rel="noopener" data-i18n="card.addressShort">6th Mile, Kumily, Idukki</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-i18n="footer.hours">Hours</h3>
+        <ul>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="footer.monsat">Mon – Sat: 8:30 AM – 9:00 PM</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="footer.sun">Sunday: closed (call for emergencies)</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-i18n="footer.explore">On this page</h3>
+        <ul>
+          <li><a href="#products" data-i18n="nav.products">Products</a></li>
+          <li><a href="#electricians" data-i18n="nav.trade">For electricians</a></li>
+          <li><a href="#visit" data-i18n="nav.visit">Visit us</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer.gst">Registered under GST as Kerala Electricals · GSTIN 32BLCPJ2525D1ZT · Composition taxable person</p>
+      <p><span class="tagline">Powering the right path</span> · <span data-i18n="footer.rights">© 2026 DIYI-PATH. All rights reserved.</span></p>
+    </div>
   </div>
 </footer>
 
-<nav class="action-bar" aria-label="Contact the shop">
-  <a class="bar-call" href="tel:+919495426446"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
-  <a class="bar-wa" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
-  <a class="bar-map" href="https://maps.app.goo.gl/uQAgdNReKTRCJRX48" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Directions</a>
+<nav class="mbar" aria-label="Contact the shop" data-i18n-attr="aria-label:mbar.label">
+  <a class="m-call" href="tel:+919495426446"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="mbar.call">Call</span></a>
+  <a class="m-wa" data-wa="hello" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20" target="_blank" rel="noopener"><svg class="ic ic-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="mbar.whatsapp">WhatsApp</span></a>
+  <a class="m-map" href="https://maps.app.goo.gl/uQAgdNReKTRCJRX48" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-nav"/></svg><span data-i18n="mbar.directions">Directions</span></a>
 </nav>
+<a class="fab" data-wa="hello" href="https://wa.me/919495426446?text=Hello%20DIYI-PATH%2C%20" target="_blank" rel="noopener"><svg class="ic ic-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="fab.text">Chat on WhatsApp</span></a>
 
 <script>
 (function () {
-  // "Open now / Closed" in India time. Shop hours: Monday–Saturday 8:30 AM – 9:00 PM.
-  var status = document.getElementById('open-status');
+  var NUMBER = '919495426446';
+  var root = document.documentElement;
+
+  // ---- Malayalam text. English is read from the page itself. ----
+  var ML = {
+    'meta.title': 'DIYI-PATH (പഴയ കേരള ഇലക്ട്രിക്കൽസ്) – ആറാം മൈൽ, കുമളിയിലെ ഇലക്ട്രിക്കൽ കട',
+    'skip': 'പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക',
+    'lang.label': 'ഭാഷ / Language',
+    'nav.products': 'ഉൽപ്പന്നങ്ങൾ',
+    'nav.trade': 'ഇലക്ട്രീഷ്യൻമാർക്ക്',
+    'nav.visit': 'സ്ഥലവും സമയവും',
+    'nav.faq': 'സംശയങ്ങൾ',
+    'nav.call': 'വിളിക്കൂ',
+    'hero.chip': 'ആറാം മൈൽ, കുമളി · 2008 മുതൽ',
+    'hero.title': 'ആറാം മൈലിലെ നിങ്ങളുടെ <span class="grad">വിശ്വസ്ത ഇലക്ട്രിക്കൽ കട</span>',
+    'hero.lead': 'വീടുകൾക്കും കടകൾക്കും ഇലക്ട്രീഷ്യൻമാർക്കും വേണ്ട വയറുകൾ, സ്വിച്ചുകൾ, ലൈറ്റുകൾ, ഫാനുകൾ, ഫിറ്റിംഗുകൾ. പഴയ കേരള ഇലക്ട്രിക്കൽസ് — അതേ കട, അതേ വിശ്വാസം, പുതിയ പേര്.',
+    'btn.call': 'ഇപ്പോൾ വിളിക്കൂ',
+    'btn.whatsapp': 'വാട്സ്ആപ്പ് ചെയ്യൂ',
+    'btn.directions': 'വഴി കാണൂ',
+    'trust.1': '2008 മുതൽ സേവനത്തിൽ',
+    'trust.2': 'ആഴ്ചയിൽ 6 ദിവസം തുറന്നിരിക്കും',
+    'trust.3': 'വാട്സ്ആപ്പിലൂടെ അന്വേഷിക്കാം',
+    'card.title': 'ഇന്ന് തന്നെ വരൂ',
+    'card.today': 'ഇന്ന്',
+    'card.phone': 'ഫോൺ',
+    'card.address': 'വിലാസം',
+    'card.addressShort': 'ആറാം മൈൽ, കുമളി, ഇടുക്കി',
+    'stat1.unit': 'വർഷം',
+    'stat1.label': '2008 മുതൽ ആറാം മൈലിൽ',
+    'stat2.unit': 'ദിവസം',
+    'stat2.label': 'തിങ്കൾ മുതൽ ശനി വരെ',
+    'stat3.unit': 'വിഭാഗങ്ങൾ',
+    'stat3.label': 'ദൈനംദിന ഇലക്ട്രിക്കൽ സാധനങ്ങൾ',
+    'stat4.label': 'സ്റ്റോക്കും വിലയും മുൻകൂട്ടി അറിയാം',
+    'products.eyebrow': 'ഉൽപ്പന്നങ്ങൾ',
+    'products.title': 'ഇലക്ട്രിക്കൽ ജോലിക്ക് വേണ്ടതെല്ലാം ഒരിടത്ത്',
+    'products.lead': 'വീടുകൾക്കും കടകൾക്കും വയറിംഗ് ജോലികൾക്കും വേണ്ട സാധനങ്ങൾ. വരുന്നതിന് മുമ്പ് വാട്സ്ആപ്പിൽ ചോദിക്കൂ — സ്റ്റോക്ക് ഉണ്ടോ എന്ന് ഞങ്ങൾ അറിയിക്കാം.',
+    'p1.title': 'വയറുകളും കേബിളുകളും', 'p1.desc': 'വീട് വയറിംഗിനും കണക്ഷനുകൾക്കും.',
+    'p2.title': 'സ്വിച്ചുകളും സോക്കറ്റുകളും', 'p2.desc': 'എല്ലാ മുറികൾക്കുമുള്ള സ്വിച്ചുകൾ, സോക്കറ്റുകൾ, പ്ലേറ്റുകൾ.',
+    'p3.title': 'MCB, ഡിസ്ട്രിബ്യൂഷൻ ബോർഡുകൾ', 'p3.desc': 'വീട്ടിലെ വയറിംഗിന് സുരക്ഷ.',
+    'p4.title': 'LED ലൈറ്റുകളും ഫിറ്റിംഗുകളും', 'p4.desc': 'ബൾബുകൾ, ട്യൂബുകൾ, പാനലുകൾ, ഫിറ്റിംഗുകൾ.',
+    'p5.title': 'ഫാനുകൾ', 'p5.desc': 'ഫാനുകളും അനുബന്ധ സാധനങ്ങളും.',
+    'p6.title': 'PVC പൈപ്പുകളും അനുബന്ധ സാധനങ്ങളും', 'p6.desc': 'കോൺഡ്യൂട്ട് പൈപ്പുകൾ, ബെൻഡുകൾ, ബോക്സുകൾ.',
+    'p7.title': 'പ്ലഗ്, ഹോൾഡർ, എക്സ്റ്റൻഷൻ ബോർഡുകൾ', 'p7.desc': 'ദിവസേന ആവശ്യമുള്ള പ്ലഗുകൾ, ഹോൾഡറുകൾ, മൾട്ടി-പ്ലഗുകൾ.',
+    'p8.title': 'ടൂളുകൾ, ടേപ്പ്, ചെറിയ സാധനങ്ങൾ', 'p8.desc': 'ടെസ്റ്ററുകൾ, ടേപ്പ്, ക്ലിപ്പുകൾ, സ്ക്രൂകൾ തുടങ്ങിയവ.',
+    'product.ask': 'വാട്സ്ആപ്പിൽ ചോദിക്കൂ',
+    'products.note': 'ആവശ്യമുള്ളത് ഇവിടെ കാണുന്നില്ലേ? <a data-wa="hello" href="https://wa.me/919495426446" target="_blank" rel="noopener">മെസ്സേജ് അയക്കൂ</a> — ഉണ്ടോ എന്ന് ഞങ്ങൾ അറിയിക്കാം.',
+    'trade.eyebrow': 'ഇലക്ട്രീഷ്യൻമാർക്കും കോൺട്രാക്ടർമാർക്കും',
+    'trade.title': 'ലിസ്റ്റ് അയക്കൂ. ഞങ്ങൾ തയ്യാറാക്കി വെക്കാം.',
+    'trade.lead': 'വയറിംഗ് ജോലിയുണ്ടോ? വാട്സ്ആപ്പിലൂടെ ലിസ്റ്റ് അയച്ച് സമയം ലാഭിക്കൂ.',
+    'step1.title': 'സാധനങ്ങളുടെ ലിസ്റ്റ് അയക്കൂ', 'step1.desc': 'ലിസ്റ്റ് ടൈപ്പ് ചെയ്തോ ഫോട്ടോ എടുത്തോ വാട്സ്ആപ്പിൽ അയക്കൂ.',
+    'step2.title': 'സ്റ്റോക്കും വിലയും നോക്കും', 'step2.desc': 'ലഭ്യമായ സാധനങ്ങളും ആകെ തുകയും ഞങ്ങൾ അറിയിക്കും.',
+    'step3.title': 'വന്ന് കൊണ്ടുപോകൂ', 'step3.desc': 'നിങ്ങൾ വരുമ്പോഴേക്കും എല്ലാം തയ്യാറായിരിക്കും.',
+    'trade.cta': 'ലിസ്റ്റ് വാട്സ്ആപ്പിൽ അയക്കൂ',
+    'trade.note': 'അല്ലെങ്കിൽ വിളിക്കൂ: <a href="tel:+919495426446">+91 94954 26446</a>',
+    'visit.eyebrow': 'സ്ഥലവും സമയവും',
+    'visit.title': 'ആറാം മൈലിൽ ഞങ്ങളെ കാണാം',
+    'hours.title': 'പ്രവർത്തന സമയം',
+    'hours.monsat.day': 'തിങ്കൾ – ശനി',
+    'hours.monsat.time': 'രാവിലെ 8:30 – രാത്രി 9:00',
+    'hours.sun.day': 'ഞായർ',
+    'hours.sun.time': 'അവധി · അത്യാവശ്യത്തിന് വിളിക്കൂ',
+    'today.tag': 'ഇന്ന്',
+    'visit.addressLabel': 'വിലാസം',
+    'visit.address': 'DIYI-PATH (പഴയ കേരള ഇലക്ട്രിക്കൽസ്)<br>ആറാം മൈൽ, ചക്കുപള്ളം, കുമളി<br>ഇടുക്കി, കേരളം 685509',
+    'map.open': 'ഗൂഗിൾ മാപ്പിൽ തുറക്കുക',
+    'map.title': 'ആറാം മൈലിലെ DIYI-PATH കാണിക്കുന്ന മാപ്പ്',
+    'story.eyebrow': 'ഞങ്ങളുടെ കഥ',
+    'story.title': 'ആറാം മൈലിൽ 18 വർഷം. അടുത്ത അധ്യായത്തിന് പുതിയ പേര്.',
+    'story.p1': '2008 മുതൽ ആറാം മൈലിലും പരിസര പ്രദേശങ്ങളിലും കേരള ഇലക്ട്രിക്കൽസ് സേവനം നൽകുന്നു. ഇന്ന് ഞങ്ങൾ DIYI-PATH — അതേ കട, അതേ ഉടമ, അതേ സത്യസന്ധമായ സേവനം; പുതിയ പേരും പുതിയ രൂപവും.',
+    'tl1.text': 'ആറാം മൈലിൽ കേരള ഇലക്ട്രിക്കൽസ് ആരംഭിച്ചു',
+    'tl2.year': 'എല്ലാ ദിവസവും',
+    'tl2.text': 'ആറാം മൈലിലെയും പരിസരത്തെയും വീടുകൾക്കും കടകൾക്കും ഇലക്ട്രീഷ്യൻമാർക്കും സേവനം',
+    'tl3.text': 'പുതിയ പേര്: DIYI-PATH — അതേ കട, അതേ ഉടമ, അതേ വിശ്വാസം',
+    'faq.eyebrow': 'സംശയങ്ങൾ',
+    'faq.title': 'അറിഞ്ഞിരിക്കേണ്ടവ',
+    'q1': 'DIYI-PATH-ഉം കേരള ഇലക്ട്രിക്കൽസും ഒരേ കടയാണോ?',
+    'a1': 'അതെ. അതേ കട, അതേ ഉടമ, ആറാം മൈലിലെ അതേ സ്ഥലം — പേര് മാത്രമേ മാറിയിട്ടുള്ളൂ.',
+    'q2': 'ഞായറാഴ്ച തുറക്കുമോ?',
+    'a2': 'ഞായറാഴ്ച അവധിയാണ്. അത്യാവശ്യമുണ്ടെങ്കിൽ ഞങ്ങളെ വിളിക്കൂ.',
+    'q3': 'വരുന്നതിന് മുമ്പ് സ്റ്റോക്കും വിലയും അറിയാമോ?',
+    'a3': 'അറിയാം. ആവശ്യമുള്ള സാധനങ്ങൾ വാട്സ്ആപ്പിൽ അയക്കൂ — ലഭ്യതയും വിലയും ഞങ്ങൾ അറിയിക്കാം.',
+    'q4': 'ഇലക്ട്രീഷ്യൻമാർക്ക് മുഴുവൻ ലിസ്റ്റും അയക്കാമോ?',
+    'a4': 'തീർച്ചയായും. ലിസ്റ്റോ അതിന്റെ ഫോട്ടോയോ വാട്സ്ആപ്പിൽ അയക്കൂ. എല്ലാം നോക്കി നിങ്ങൾ വരുമ്പോഴേക്കും തയ്യാറാക്കി വെക്കാം.',
+    'cta.title': 'ഇന്ന് എന്തെങ്കിലും ആവശ്യമുണ്ടോ?',
+    'cta.lead': 'വിളിക്കൂ അല്ലെങ്കിൽ വാട്സ്ആപ്പ് ചെയ്യൂ — സഹായിക്കാൻ ഞങ്ങൾ തയ്യാർ.',
+    'footer.blurb': 'ആറാം മൈൽ, കുമളിയിലെ ഇലക്ട്രിക്കൽ കട. പഴയ കേരള ഇലക്ട്രിക്കൽസ് — 2008 മുതൽ.',
+    'footer.contact': 'ബന്ധപ്പെടാൻ',
+    'footer.hours': 'സമയം',
+    'footer.explore': 'ഈ പേജിൽ',
+    'footer.monsat': 'തിങ്കൾ – ശനി: രാവിലെ 8:30 – രാത്രി 9:00',
+    'footer.sun': 'ഞായർ: അവധി (അത്യാവശ്യത്തിന് വിളിക്കൂ)',
+    'footer.gst': 'GST രജിസ്ട്രേഷൻ പേര്: കേരള ഇലക്ട്രിക്കൽസ് · GSTIN 32BLCPJ2525D1ZT · Composition taxable person',
+    'footer.rights': '© 2026 DIYI-PATH. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.',
+    'mbar.label': 'കടയുമായി ബന്ധപ്പെടാൻ',
+    'mbar.call': 'വിളിക്കൂ',
+    'mbar.whatsapp': 'വാട്സ്ആപ്പ്',
+    'mbar.directions': 'വഴി',
+    'fab.text': 'വാട്സ്ആപ്പിൽ ചാറ്റ് ചെയ്യൂ'
+  };
+  var WA = {
+    en: { hello: 'Hello DIYI-PATH, ', ask: 'Hello DIYI-PATH, I want to ask about: ', list: 'Hello DIYI-PATH, here is my material list for a wiring job:\n' },
+    ml: { hello: 'നമസ്കാരം DIYI-PATH, ', ask: 'നമസ്കാരം DIYI-PATH, ഇതിനെക്കുറിച്ച് അറിയണം: ', list: 'നമസ്കാരം DIYI-PATH, വയറിംഗ് ജോലിക്കുള്ള സാധനങ്ങളുടെ ലിസ്റ്റ്:\n' }
+  };
+  var STATUS = {
+    en: { open: 'Open now · closes 9:00 PM', before: 'Closed now · opens today at 8:30 AM', after: 'Closed now · opens tomorrow at 8:30 AM', afterSat: 'Closed now · opens Monday at 8:30 AM', sunday: 'Closed today (Sunday) · call for emergencies' },
+    ml: { open: 'ഇപ്പോൾ തുറന്നിരിക്കുന്നു · രാത്രി 9-ന് അടയ്ക്കും', before: 'ഇപ്പോൾ അടച്ചിരിക്കുന്നു · ഇന്ന് രാവിലെ 8:30-ന് തുറക്കും', after: 'ഇപ്പോൾ അടച്ചിരിക്കുന്നു · നാളെ രാവിലെ 8:30-ന് തുറക്കും', afterSat: 'ഇപ്പോൾ അടച്ചിരിക്കുന്നു · തിങ്കളാഴ്ച രാവിലെ 8:30-ന് തുറക്കും', sunday: 'ഇന്ന് ഞായർ, അവധി · അത്യാവശ്യത്തിന് വിളിക്കൂ' }
+  };
+
+  var each = function (sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); };
+  var EN = {};
+  each('[data-i18n]', function (el) { var k = el.getAttribute('data-i18n'); if (!(k in EN)) EN[k] = el.innerHTML; });
+  each('[data-i18n-attr]', function (el) {
+    el.getAttribute('data-i18n-attr').split(';').forEach(function (pair) {
+      var p = pair.split(':'); if (!(p[1] in EN)) EN[p[1]] = el.getAttribute(p[0]);
+    });
+  });
+  var t = function (k, lang) { return (lang === 'ml' && ML[k] != null) ? ML[k] : EN[k]; };
+
+  // Shop hours in India time: Monday–Saturday 8:30 AM – 9:00 PM, closed Sunday.
+  var clock = null;
   try {
     var v = {};
-    new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Asia/Kolkata', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
-    }).formatToParts(new Date()).forEach(function (p) { v[p.type] = p.value; });
-    var day = v.weekday, mins = parseInt(v.hour, 10) * 60 + parseInt(v.minute, 10);
-    var OPEN = 8 * 60 + 30, CLOSE = 21 * 60, msg, cls = 'is-closed';
-    if (day === 'Sun') msg = 'Closed today (Sunday) · emergencies: please call';
-    else if (mins >= OPEN && mins < CLOSE) { msg = 'Open now · closes 9:00 PM'; cls = 'is-open'; }
-    else if (mins < OPEN) msg = 'Closed now · opens today at 8:30 AM';
-    else if (day === 'Sat') msg = 'Closed now · opens Monday at 8:30 AM';
-    else msg = 'Closed now · opens tomorrow at 8:30 AM';
-    status.textContent = msg;
-    status.classList.add(cls);
-    var row = document.querySelector(day === 'Sun' ? '[data-day="sun"]' : '[data-day="monsat"]');
-    if (row) row.classList.add('today');
-  } catch (e) { /* keep the plain hours text */ }
+    new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+      .formatToParts(new Date()).forEach(function (p) { v[p.type] = p.value; });
+    clock = { day: v.weekday, mins: parseInt(v.hour, 10) * 60 + parseInt(v.minute, 10) };
+  } catch (e) {}
+  var statusKey = null;
+  if (clock) {
+    var OPEN = 8 * 60 + 30, CLOSE = 21 * 60;
+    if (clock.day === 'Sun') statusKey = 'sunday';
+    else if (clock.mins >= OPEN && clock.mins < CLOSE) statusKey = 'open';
+    else if (clock.mins < OPEN) statusKey = 'before';
+    else statusKey = clock.day === 'Sat' ? 'afterSat' : 'after';
+    var todayRow = document.querySelector(clock.day === 'Sun' ? '[data-day="sun"]' : '[data-day="monsat"]');
+    if (todayRow) todayRow.classList.add('today');
+    if (clock.day === 'Sun') document.getElementById('today-hours').setAttribute('data-i18n', 'hours.sun.time');
+  }
 
-  // On phones, show the bottom contact bar only after the big buttons scroll out of view.
-  var bar = document.querySelector('.action-bar');
-  var heroButtons = document.getElementById('hero-actions');
-  if (bar && heroButtons && 'IntersectionObserver' in window) {
-    bar.classList.add('is-hidden');
-    new IntersectionObserver(function (entries) {
-      bar.classList.toggle('is-hidden', entries[0].isIntersecting);
-    }).observe(heroButtons);
+  function apply(lang) {
+    each('[data-i18n]', function (el) { var val = t(el.getAttribute('data-i18n'), lang); if (val != null) el.innerHTML = val; });
+    each('[data-i18n-attr]', function (el) {
+      el.getAttribute('data-i18n-attr').split(';').forEach(function (pair) {
+        var p = pair.split(':'), val = t(p[1], lang); if (val != null) el.setAttribute(p[0], val);
+      });
+    });
+    root.lang = lang;
+    root.setAttribute('data-lang', lang);
+    each('[data-set-lang]', function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang)); });
+    if (statusKey) each('.js-status', function (el) {
+      el.textContent = STATUS[lang][statusKey];
+      el.classList.toggle('is-open', statusKey === 'open');
+      el.classList.toggle('is-closed', statusKey !== 'open');
+    });
+    each('[data-wa]', function (a) {
+      var kind = a.getAttribute('data-wa'), msg = WA[lang][kind] || WA[lang].hello;
+      if (kind === 'ask') {
+        var card = a.closest('.product'), h = card && card.querySelector('h3');
+        msg = WA[lang].ask + (h ? h.textContent.trim() : '');
+      }
+      a.href = 'https://wa.me/' + NUMBER + '?text=' + encodeURIComponent(msg);
+      a.target = '_blank';
+      a.rel = 'noopener';
+    });
+    try { localStorage.setItem('diyi-lang', lang); } catch (e) {}
+    root.classList.remove('i18n-pending');
+  }
+
+  apply(root.getAttribute('data-lang') === 'ml' ? 'ml' : 'en');
+
+  each('[data-set-lang]', function (b) {
+    b.addEventListener('click', function () {
+      var lang = b.getAttribute('data-set-lang');
+      apply(lang);
+      try {
+        var u = new URL(location.href);
+        if (lang === 'ml') u.searchParams.set('lang', 'ml'); else u.searchParams.delete('lang');
+        history.replaceState(null, '', u);
+      } catch (e) {}
+    });
+  });
+
+  // Header shadow once the page scrolls.
+  var header = document.querySelector('.site-header');
+  var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 4); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if ('IntersectionObserver' in window) {
+    // Phones: show the bottom contact bar once the big hero buttons scroll away.
+    // Large screens: same for the floating WhatsApp button.
+    var heroButtons = document.getElementById('hero-actions');
+    if (heroButtons) {
+      each('.mbar, .fab', function (el) { el.classList.add('is-hidden'); });
+      new IntersectionObserver(function (entries) {
+        each('.mbar, .fab', function (el) { el.classList.toggle('is-hidden', entries[0].isIntersecting); });
+      }).observe(heroButtons);
+    }
+    // Fade sections in as they scroll into view.
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    each('.reveal', function (el) { io.observe(el); });
+  } else {
+    each('.reveal', function (el) { el.classList.add('in'); });
   }
 })();
 </script>
