@@ -55,6 +55,14 @@ Delivery is **within Kerala only**. The business is on the GST composition schem
 - It loads after the rest of the page. It is skipped, and the still image stays, on phones with Data Saver on, 2G connections, very low memory, or no WebGL.
 - It turns slowly and tilts with the mouse. With "reduce motion" switched on in the phone or computer settings, it stays still. It pauses when scrolled out of view.
 
+## Edge lines (decorative layer)
+
+- A layer behind the content (`.screen-decor`) holds 17 SVG lines that run off the left and right screen edges beside each section. They are built by the "Edge lines" part of the script.
+- Each line is one of the shop's trades: **power** (blue cable, lightning ending, one spark runs along it), **water** (graphite pipe, droplet ending), **smart** (green trace with square nodes, Wi-Fi ending) and **route** (milestones ending in a map pin: the order steps, the delivery road Kumily → Kochi, and the shop's years).
+- Small labels (`230 V`, `Ø 25 mm`, `Wi-Fi 2.4 GHz`, place names) follow the language switch and are hidden on phones. Lines narrow themselves to fit the free side margin.
+- Each line draws once when scrolled into view, with its own timing, and drifts slightly up or down (limited to 36 px). Nothing moves with "reduce motion" on.
+- To change a line, edit the `LINES` list: anchor section, position, side, shape, trade, labels, parallax strength and direction.
+
 ## Features
 
 - Four departments (Electrical, Plumbing, Sanitary, Smart home & IoT) that filter the 14 product cards.
