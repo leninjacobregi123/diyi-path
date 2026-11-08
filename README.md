@@ -69,6 +69,13 @@ Delivery is **within Kerala only**. The business is on the GST composition schem
 - **Phones and tablets (under 1280 px wide):** content fills the screen, so instead of running along the sides, the page measures the empty strips between content blocks (between sections, headings and product cards) and runs one line across each strip. Lines never cross a photo, card or button. Product cards get a wider gap on phones to make room.
 - To change a line, edit the `LINES` list: anchor section, position, side, shape, trade, labels, parallax strength and direction.
 
+## Rails (vertical lines down the page)
+
+- **Left rail (main wire, blue):** fills as the visitor scrolls (a reading-progress line). At each section heading a node lights up and a branch runs into the heading; large screens number the nodes 01, 02 …
+- **Right rail (measuring tape, green):** thin ruler with tick marks (every fifth one longer) that also fills as you scroll.
+- On phones the rails sit in the 16 px side gutters, so they never touch content. They are hidden behind the dark "professionals" section. Code: the "Rails" part of the script; the layer is `.screen-rails`.
+- Large screens also get horizontal lines across the bigger gaps between sections (80 px or more), and side-line labels are hidden when the side margins are narrow (1280–1480 px) so they don't cross the rails.
+
 ## Features
 
 - Four departments (Electrical, Plumbing, Sanitary, Smart home & IoT) that filter the 14 product cards.
