@@ -52,14 +52,19 @@ Delivery is **within Kerala only**. The business is on the GST composition schem
 ## The 3D emblem
 
 - The blue and green shapes were traced from the approved emblem artwork and given depth with three.js. The colours are the solid brand blue and green; the shading comes only from the scene's lighting.
-- It loads after the rest of the page. It is skipped, and the still image stays, on phones with Data Saver on, 2G connections, very low memory, or no WebGL.
-- It turns slowly and tilts with the mouse. With "reduce motion" switched on in the phone or computer settings, it stays still. It pauses when scrolled out of view.
+- **Power-on intro:** the flat logo grows into 3D, the green road slides in, a spark runs up the road and the blue P lights up.
+- **Drag or swipe** to spin it; it keeps a little momentum, then turns back to face front. **Tap** it to "charge": one quick turn, a spark and a flash.
+- **Department tokens** (electrical bolt, plumbing drop, sanitary bath, smart-home house) orbit it. Hover shows the name; tapping one filters the products and scrolls to them.
+- **Hover** separates the blue and green layers. **Scrolling** turns and tilts it. **Phone tilt** moves it (Android straight away, iPhone after the first tap allows it).
+- **Shop hours:** bright lighting when the shop is open, calmer "night" lighting and slower movement when closed.
+- It loads after the rest of the page and is skipped (the still image stays) with Data Saver, 2G, very low memory or no WebGL. With "reduce motion" on, it stays still but can still be dragged and tapped. It pauses when scrolled out of view.
+- When `emblem3d.js` changes, raise the `?v=` number in its `import()` line in `index.html` so browsers fetch the new copy.
 
 ## Edge lines (decorative layer)
 
-- A layer behind the content (`.screen-decor`) holds 17 SVG lines that run off the left and right screen edges beside each section. They are built by the "Edge lines" part of the script.
+- A layer behind the content (`.screen-decor`) holds 29 SVG lines that run off the left and right screen edges beside each section. They are built by the "Edge lines" part of the script.
 - Each line is one of the shop's trades: **power** (blue cable, lightning ending, one spark runs along it), **water** (graphite pipe, droplet ending), **smart** (green trace with square nodes, Wi-Fi ending) and **route** (milestones ending in a map pin: the order steps, the delivery road Kumily → Kochi, and the shop's years).
-- Small labels (`230 V`, `Ø 25 mm`, `Wi-Fi 2.4 GHz`, place names) follow the language switch and are hidden on phones. Lines narrow themselves to fit the free side margin.
+- Small labels (`230 V`, `Ø 25 mm`, `Wi-Fi 2.4 GHz`, place names) follow the language switch and are hidden on phones. Lines narrow themselves to fit the free side margin and are spaced apart automatically so they never tangle.
 - Each line draws once when scrolled into view, with its own timing, and drifts slightly up or down (limited to 36 px). Nothing moves with "reduce motion" on.
 - To change a line, edit the `LINES` list: anchor section, position, side, shape, trade, labels, parallax strength and direction.
 

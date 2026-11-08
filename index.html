@@ -1421,7 +1421,9 @@ html.js .reveal.in { opacity: 1; transform: none; }
       hook:    'M0 300 H 80 Q 120 300 120 260 V 120 Q 120 80 160 80 H 220',
       road:    'M0 0 C 160 60, 40 260, 170 330 S 230 440, 260 470',
       long:    'M0 10 C 140 40, 60 200, 160 260 S 120 420, 230 470',
-      steps:   'M0 200 H 60 L 100 160 H 160 L 200 120'
+      steps:   'M0 200 H 60 L 100 160 H 160 L 200 120',
+      zig:     'M0 40 H 60 L 100 80 V 160 L 60 200 V 280 L 120 340 H 200',
+      wave:    'M0 60 C 80 60, 80 160, 40 200 S 20 320, 110 340 S 220 330, 240 430'
     };
     // Lucide-style glyphs (24-unit grid) for the line endings
     var GLYPH = {
@@ -1455,7 +1457,20 @@ html.js .reveal.in { opacity: 1; transform: none; }
       ['#story', .50, 'right', 'pipe', 'water', [L('Ø 32 mm')], .05, -1],
       ['#faq', .08, 'left', 'steps', 'smart', [L('Sensor', 'സെൻസർ')], .08, -1],
       ['#faq', .55, 'right', 'coil', 'power', [L('LED 9 W')], .09, 1],
-      ['#cta-title', -.6, 'right', 'cable', 'power', [L('DIYI-PATH')], .10, 1]
+      ['#cta-title', -.6, 'right', 'cable', 'power', [L('DIYI-PATH')], .10, 1],
+      // more stories along the page
+      ['.hero', .62, 'right', 'zig', 'smart', [L('Smart switch', 'സ്മാർട്ട് സ്വിച്ച്'), L('App control', 'ആപ്പ് കൺട്രോൾ')], .07, 1],
+      ['#products', .57, 'right', 'circuit', 'power', [L('16 A socket', '16 A സോക്കറ്റ്')], .08, -1],
+      ['#products', .95, 'left', 'wave', 'water', [L('Ball valve', 'ബോൾ വാൽവ്'), L('½ inch', '½ ഇഞ്ച്')], .07, 1],
+      ['#order', .02, 'left', 'long', 'route', [L('Kumily', 'കുമളി'), L('Thodupuzha', 'തൊടുപുഴ'), L('Thrissur', 'തൃശൂർ'), L('Kozhikode', 'കോഴിക്കോട്')], .09, 1],
+      ['#order', .55, 'right', 'coil', 'power', [L('Earthing', 'എർത്തിംഗ്'), L('1.5 sq mm')], .10, 1],
+      ['#order', .88, 'right', 'zig', 'smart', [L('UPI'), L('Paid ✓', 'പണമടച്ചു ✓')], .06, -1],
+      ['#visit', 0, 'left', 'hook', 'route', [L('8:30 AM', 'രാവിലെ 8:30'), L('9:00 PM', 'രാത്രി 9:00')], .08, -1],
+      ['#visit', .62, 'right', 'long', 'route', [L('Kumily', 'കുമളി'), L('Pathanamthitta', 'പത്തനംതിട്ട'), L('Thiruvananthapuram', 'തിരുവനന്തപുരം')], .07, 1],
+      ['#story', .75, 'left', 'wave', 'power', [L('Kerala Electricals', 'കേരള ഇലക്ട്രിക്കൽസ്'), L('DIYI-PATH')], .09, -1],
+      ['#faq', 0, 'right', 'wave', 'water', [L('Overhead tank', 'ഓവർഹെഡ് ടാങ്ക്'), L('Inlet', 'ഇൻലെറ്റ്')], .08, 1],
+      ['#faq', .7, 'left', 'zig', 'power', [L('Wiring', 'വയറിംഗ്'), L('Switch board', 'സ്വിച്ച് ബോർഡ്')], .07, 1],
+      ['#cta-title', -.3, 'left', 'road', 'route', [L('Order', 'ഓർഡർ'), L('Kerala', 'കേരളം')], .09, -1]
     ];
     // Squeeze a shape sideways (x only) so it fits the free margin beside the content.
     function scaleD(d, sx) {
@@ -1542,8 +1557,16 @@ html.js .reveal.in { opacity: 1; transform: none; }
       items.forEach(function (it) {
         var r = it.anchor.getBoundingClientRect();
         it.top = r.top + window.scrollY - base + r.height * it.frac;
-        it.svg.style.top = it.top + 'px';
       });
+      // keep lines on the same side apart so they never tangle
+      var gap = (window.innerWidth < 760 ? .55 : 1) * 360;
+      ['left', 'right'].forEach(function (side) {
+        var prev = -1e9;
+        items.filter(function (it) { return it.right === (side === 'right'); })
+          .sort(function (a, b) { return a.top - b.top; })
+          .forEach(function (it) { it.top = Math.max(it.top, prev + gap); prev = it.top; });
+      });
+      items.forEach(function (it) { it.svg.style.top = it.top + 'px'; });
       update();
     }
     var ticking = false;
@@ -1574,8 +1597,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
   var lowMemory = navigator.deviceMemory && navigator.deviceMemory < 2;
   if (host && webgl && !lowData && !lowMemory) {
     var start = function () {
-      import('./assets/emblem3d.js').then(function (m) {
-        m.default(host, { reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches });
+      import('./assets/emblem3d.js?v=2').then(function (m) {
+        m.default(host, {
+          reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+          open: statusKey === 'open',
+          label: function (d) { return plain(t('dept.' + d)); },
+          onDepartment: function (d) { setFilter(d); document.getElementById('products').scrollIntoView({ behavior: 'smooth' }); }
+        });
       }).catch(function () {});
     };
     if (document.readyState === 'complete') setTimeout(start, 150); else window.addEventListener('load', function () { setTimeout(start, 150); });
