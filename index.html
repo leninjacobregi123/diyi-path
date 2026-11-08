@@ -447,6 +447,11 @@ main, .footer { position: relative; z-index: 1; }
 .edge-line .tag { font: 600 10.5px/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase; fill: rgba(17, 24, 39, .55); }
 html[data-lang="ml"] .edge-line .tag { font-size: 11.5px; letter-spacing: 0; text-transform: none; }
 @media (max-width: 759px) { .edge-line .tag { display: none; } }
+/* phones and tablets: lines run across the screen in the empty strips between content */
+.edge-line.gap-line { left: 0; opacity: 1; }
+.edge-line.gap-line .tag { display: block; font-size: 9.5px; letter-spacing: .06em; }
+html[data-lang="ml"] .edge-line.gap-line .tag { font-size: 10.5px; letter-spacing: 0; }
+@media (max-width: 759px) { .products { gap: 56px; } }
 @media (max-width: 759px) { .edge-line { opacity: .45; } }
 /* cards sit on white so lines pass behind them, never across their text */
 .step, .info, .dept, .order-card, .info-card { background: var(--white); }
@@ -1489,6 +1494,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
     var vw = window.innerWidth, small = vw < 760;
     var sx = small ? 1 : Math.max(.38, Math.min(1, ((vw - 1160) / 2 + 20) / 230));
     layer.innerHTML = ''; items = []; texts = []; lastW = vw;
+    if (vw < 1280) { buildGaps(); setLang(); return; }
     LINES.forEach(function (c, idx) {
       var anchor = document.querySelector(c[0]); if (!anchor) return;
       var kind = KIND[c[4]], col = C[kind.color], right = c[2] === 'right';
@@ -1552,7 +1558,71 @@ html.js .reveal.in { opacity: 1; transform: none; }
     }
     new MutationObserver(setLang).observe(root, { attributes: true, attributeFilter: ['data-lang'] });
     build();
+    // Phones/tablets: find the empty horizontal strips between content blocks and run a line through each one.
+    var SOLID = '.site-header, .hero-grid > *, .dept, .section-head, .filters, .product, .products-note, .step, .order-card, .order-aside > *, .dark, .visit-grid > *, .story-text, .timeline, .faq, .cta-box, .footer';
+    var BYKIND = {};
+    LINES.forEach(function (c) { (BYKIND[c[4]] = BYKIND[c[4]] || []).push(c[5]); });
+    function buildGaps() {
+      var base = layer.getBoundingClientRect().top + window.scrollY, W = layer.clientWidth, sy = window.scrollY;
+      var solids = [];
+      document.querySelectorAll(SOLID).forEach(function (e) {
+        if (getComputedStyle(e).position === 'sticky') { solids.push([0, e.offsetHeight]); return; }
+        // resting position (ignores the slide-in animation's offset)
+        var r = e.getBoundingClientRect(); if (!r.height) return;
+        var mover = e.closest('.reveal') || e, tf = getComputedStyle(mover).transform, shift = tf && tf !== 'none' ? new DOMMatrix(tf).m42 : 0;
+        solids.push([r.top + sy - base - shift, r.bottom + sy - base - shift]);
+      });
+      solids.sort(function (a, b) { return a[0] - b[0]; });
+      var gaps = [], end = 0;
+      solids.forEach(function (b) { if (b[0] - end >= 34) gaps.push([end, b[0]]); end = Math.max(end, b[1]); });
+      var order = ['power', 'water', 'smart', 'route'], count = {};
+      gaps.forEach(function (g, n) {
+        var kindName = order[n % 4], kind = KIND[kindName], col = C[kind.color];
+        var top = g[0] + 3, h = g[1] - g[0] - 6, c = h / 2, a = Math.max(0, Math.min(c - 10, 16));
+        var fromRight = n % 2 === 1, f = .5 + ((n * 37) % 30) / 100;
+        var x0 = fromRight ? W + 6 : -6, x1 = fromRight ? W * (1 - f) : W * f, dx = x1 - x0;
+        var d = kindName === 'smart'
+          ? 'M' + x0 + ' ' + (c + a * .6) + ' H ' + (x0 + dx * .45) + ' L ' + (x0 + dx * .45 + (fromRight ? -12 : 12)) + ' ' + (c - a * .6) + ' H ' + x1
+          : 'M' + x0 + ' ' + c + ' C ' + (x0 + dx * .35) + ' ' + (c - a) + ', ' + (x0 + dx * .65) + ' ' + (c + a) + ', ' + x1 + ' ' + c;
+        var svg = el('svg', { 'class': 'edge-line gap-line k-' + kindName, viewBox: '0 0 ' + W + ' ' + h });
+        svg.style.top = top + 'px'; svg.style.width = W + 'px'; svg.style.height = h + 'px';
+        var paths = [];
+        if (kind.casing) paths.push(el('path', { d: d, stroke: col, 'stroke-width': Math.min(kind.casing, 7), 'stroke-opacity': .08 }, svg));
+        var path = el('path', { d: d, stroke: col, 'stroke-width': kind.width, 'stroke-opacity': kind.op }, svg);
+        paths.push(path); layer.appendChild(svg);
+        var len = path.getTotalLength(), dur = 1.2 + ((n * 53) % 9) / 10, delay = ((n * 29) % 4) / 10, late = [];
+        var sets = BYKIND[kindName] || [[]]; count[kindName] = (count[kindName] || 0) + 1;
+        var labs = sets[(count[kindName] - 1) % sets.length].slice(0, kindName === 'route' ? 3 : 1);
+        labs.forEach(function (lab, i) {
+          var fr = kindName === 'route' ? (i + 1) / (labs.length + 1) : .55, pt = path.getPointAtLength(len * fr), t = delay + dur * fr;
+          var node = kind.nodes === 'square'
+            ? el('rect', { x: pt.x - 2.5, y: pt.y - 2.5, width: 5, height: 5, fill: col, 'class': 'node' }, svg)
+            : el('circle', { cx: pt.x, cy: pt.y, r: 2.6, fill: '#FFFFFF', stroke: col, 'stroke-width': 1.5, 'class': 'node' }, svg);
+          late.push([node, t]);
+          if (h >= 40) {
+            var tx = el('text', { x: pt.x, y: pt.y - 8, 'text-anchor': 'middle', 'class': 'tag' }, svg);
+            tx.textContent = lab.en; texts.push({ node: tx, lab: lab }); late.push([tx, t + .1]);
+          }
+        });
+        var e = path.getPointAtLength(len), r = Math.max(6, Math.min(10, c - 3)), k = .58 * r / 11, ec = C[kind.endColor || kind.color];
+        var endG = el('g', { 'class': 'end', transform: 'translate(' + e.x.toFixed(1) + ' ' + e.y.toFixed(1) + ')' }, svg);
+        el('circle', { r: r, fill: '#FFFFFF', stroke: ec, 'stroke-width': 1.5 }, endG);
+        el('path', { d: GLYPH[kindName], transform: 'translate(' + (-12 * k).toFixed(2) + ' ' + (-12 * k).toFixed(2) + ') scale(' + k.toFixed(3) + ')', fill: 'none', stroke: ec, 'stroke-width': 2.2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, endG);
+        late.push([endG, delay + dur * .95]);
+        var key = 'g' + n, was = reduce || built[key];
+        paths.forEach(function (pp) {
+          var l = pp.getTotalLength(); pp.style.strokeDasharray = l;
+          pp.style.strokeDashoffset = was ? 0 : l;
+          pp.style.transition = was ? 'none' : 'stroke-dashoffset ' + dur.toFixed(2) + 's cubic-bezier(.45,.05,.25,1) ' + delay.toFixed(2) + 's';
+        });
+        late.forEach(function (x) { x[0].style.transitionDelay = (was ? 0 : x[1]).toFixed(2) + 's'; });
+        if (was) svg.classList.add('drawn');
+        items.push({ idx: key, gap: true, svg: svg, paths: paths, path: path, len: len, right: false, col: col, kind: kindName, pulse: kind.pulse, start: delay + dur, top: top, h: h, drawn: was });
+      });
+    }
+    var gapTimer;
     function place() {
+      if (window.innerWidth < 1280) { clearTimeout(gapTimer); gapTimer = setTimeout(function () { build(); update(); }, 160); return; }
       var base = layer.getBoundingClientRect().top + window.scrollY;
       items.forEach(function (it) {
         var r = it.anchor.getBoundingClientRect();
@@ -1574,6 +1644,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
       ticking = false;
       var vh = window.innerHeight, sy = window.scrollY, small = window.innerWidth < 760, max = small ? 18 : 36;
       items.forEach(function (it) {
+        if (it.gap) {
+          var gt = it.top - sy;
+          if (!it.drawn && gt < vh * .9 && gt + it.h > vh * .05) {
+            it.drawn = true; built[it.idx] = true; it.paths.forEach(function (pp) { pp.style.strokeDashoffset = 0; }); it.svg.classList.add('drawn'); pulse(it);
+          }
+          return;
+        }
         var top = it.top - sy, h = small ? 264 : 480;
         if (!it.drawn && top < vh * .85 && top + h > vh * .1) {
           it.drawn = true; built[it.idx] = true; it.paths.forEach(function (pp) { pp.style.strokeDashoffset = 0; }); it.svg.classList.add('drawn'); pulse(it);
@@ -1597,12 +1674,16 @@ html.js .reveal.in { opacity: 1; transform: none; }
   var lowMemory = navigator.deviceMemory && navigator.deviceMemory < 2;
   if (host && webgl && !lowData && !lowMemory) {
     var start = function () {
-      import('./assets/emblem3d.js?v=2').then(function (m) {
+      import('./assets/emblem3d.js?v=5').then(function (m) {
         m.default(host, {
           reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
           open: statusKey === 'open',
-          label: function (d) { return plain(t('dept.' + d)); },
-          onDepartment: function (d) { setFilter(d); document.getElementById('products').scrollIntoView({ behavior: 'smooth' }); }
+          label: function (d) { return plain(t({ bulb: 'nav.products', plant: 'story.eyebrow' }[d] || 'dept.' + d)); },
+          onDepartment: function (d) {
+            if (d === 'plant') { document.getElementById('story').scrollIntoView({ behavior: 'smooth' }); return; }
+            setFilter(d === 'bulb' ? 'all' : d);
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+          }
         });
       }).catch(function () {});
     };

@@ -76,6 +76,22 @@ function iconShapes(kind) {
     [[.03, .13], [-.07, -.01], [0, -.01], [-.03, -.13], [.07, .01], [0, .01]].forEach(([x, y], i) => (i ? s.lineTo(x, y) : s.moveTo(x, y)));
     s.closePath(); return [s];
   }
+  if (kind === 'bulb') {
+    // glass: an arc over the top, narrowing into the neck
+    s.moveTo(-.035, -.055); s.lineTo(-.035, -.025);
+    s.absarc(0, .035, .0695, 4.1888, -1.0472, true);
+    s.lineTo(.035, -.055); s.closePath();
+    const cap = new THREE.Shape(); cap.moveTo(-.03, -.07); cap.lineTo(.03, -.07); cap.lineTo(.03, -.1); cap.lineTo(-.03, -.1); cap.closePath();
+    return [s, cap];
+  }
+  if (kind === 'plant') {
+    // pot, stem and two leaves
+    s.moveTo(-.045, -.07); s.lineTo(.045, -.07); s.lineTo(.034, -.115); s.lineTo(-.034, -.115); s.closePath();
+    const stem = new THREE.Shape(); stem.moveTo(-.008, -.07); stem.lineTo(.008, -.07); stem.lineTo(.008, .02); stem.lineTo(-.008, .02); stem.closePath();
+    const left = new THREE.Shape(); left.moveTo(0, -.02); left.quadraticCurveTo(-.1, -.01, -.085, .085); left.quadraticCurveTo(-.01, .08, 0, -.02);
+    const right = new THREE.Shape(); right.moveTo(0, .01); right.quadraticCurveTo(.1, .02, .09, .12); right.quadraticCurveTo(.01, .11, 0, .01);
+    return [s, stem, left, right];
+  }
   if (kind === 'plumbing') {
     s.moveTo(0, .12); s.bezierCurveTo(.03, .07, .08, .02, .08, -.03);
     s.absarc(0, -.03, .08, 0, Math.PI, true); s.bezierCurveTo(-.08, .02, -.03, .07, 0, .12); return [s];
@@ -128,8 +144,8 @@ export default function mountEmblem(host, { reducedMotion = false, open = true, 
   const sparkLight = new THREE.PointLight(WHITE, 0, 1.4); spark.add(sparkLight);
   spark.visible = false; spark.position.z = .3; green.add(spark);
 
-  // Department tokens orbiting the emblem.
-  const DEPTS = [['electrical', BLUE], ['plumbing', GRAPHITE], ['sanitary', GRAPHITE], ['smart', GREEN]];
+  // Tokens orbiting the emblem: lightning (electrical), bulb (all products), house (smart home), plant (our path).
+  const DEPTS = [['electrical', BLUE], ['bulb', GRAPHITE], ['smart', GRAPHITE], ['plant', GREEN]];
   const ring = new THREE.Group(); ring.rotation.x = .32; scene.add(ring);
   const tokens = DEPTS.map(([dept, col], i) => {
     const holder = new THREE.Group(), face = new THREE.Group();
@@ -216,7 +232,7 @@ export default function mountEmblem(host, { reducedMotion = false, open = true, 
   let running = false, visible = true;
   function frame(ts) {
     if (!running) return;
-    const dt = Math.min(.05, (ts - last) / 1000); last = ts; now += dt;
+    const tnow = performance.now(), dt = clamp((tnow - last) / 1000, 0, .25); last = tnow; now += dt;
     if (!started) { started = true; introStart = now; if (!reducedMotion) runSpark(now + .8); }
 
     // intro: the flat logo grows into 3D, the road slides in
