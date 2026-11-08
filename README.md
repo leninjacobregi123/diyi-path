@@ -51,7 +51,7 @@ Delivery is **within Kerala only**. The business is on the GST composition schem
 
 ## The 3D emblem
 
-- The blue and green shapes were traced from the approved emblem artwork and given depth with three.js. The colours are the solid brand blue and green; the shading comes only from the scene's lighting.
+- The blue and green shapes were traced from the approved emblem artwork and given depth with three.js. Its colours are measured from the approved emblem artwork (`DIYIPATH_Standalone_Emblem.png`): blue shading from #029FF5 at the top to #026ABB at the bottom, and light green #39BA0B (edges #26AB14 / #1C9F09). Lighting is tuned so the front face shows those colours as they are.
 - **Power-on intro:** the flat logo grows into 3D, the green road slides in, a spark runs up the road and the blue P lights up.
 - **Drag or swipe** to spin it; it keeps a little momentum, then turns back to face front. **Tap** it to "charge": one quick turn, a spark and a flash.
 - **Orbiting tokens:** lightning bolt (opens Electrical products), bulb (all products), house (Smart home) and a small plant (growth: scrolls to "Our path"). Hover shows the name; tapping one jumps there.

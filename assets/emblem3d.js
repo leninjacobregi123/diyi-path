@@ -55,6 +55,26 @@ function extrude(points, depth) {
 }
 
 const BLUE = 0x168bcb, GREEN = 0x168a24, GRAPHITE = 0x111827, WHITE = 0xffffff;
+// Colours measured from the approved emblem artwork (DIYIPATH_Standalone_Emblem.png), bottom to top.
+const LOGO_BLUE = [[.125, 0x026abb], [.375, 0x0282df], [.625, 0x0290ec], [.875, 0x029ff5]];
+const LOGO_GREEN = [[.125, 0x1c9f09], [.5, 0x39ba0b], [.875, 0x26ab14]];
+
+// Paint the logo's own top-to-bottom shading onto a geometry as vertex colours.
+function paint(geo, stops) {
+  const pos = geo.attributes.position, n = pos.count;
+  let min = Infinity, max = -Infinity;
+  for (let i = 0; i < n; i++) { const y = pos.getY(i); if (y < min) min = y; if (y > max) max = y; }
+  const cols = stops.map(([t, hex]) => [t, new THREE.Color(hex)]), out = new Float32Array(n * 3), c = new THREE.Color();
+  for (let i = 0; i < n; i++) {
+    const t = (pos.getY(i) - min) / (max - min || 1);
+    let k = 0; while (k < cols.length - 2 && t > cols[k + 1][0]) k++;
+    const [t0, c0] = cols[k], [t1, c1] = cols[k + 1];
+    c.copy(c0).lerp(c1, clamp((t - t0) / (t1 - t0), 0, 1));
+    out.set([c.r, c.g, c.b], i * 3);
+  }
+  geo.setAttribute('color', new THREE.BufferAttribute(out, 3));
+  return geo;
+}
 const ease = { out: (t) => 1 - Math.pow(1 - t, 3), inOut: (t) => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2) };
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
@@ -107,7 +127,7 @@ function iconShapes(kind) {
   s.closePath(); const hole = new THREE.Path(); hole.absarc(0, -.02, .035, 0, Math.PI * 2, true); s.holes.push(hole); return [s];
 }
 
-export default function mountEmblem(host, { reducedMotion = false, open = true, onDepartment, label } = {}) {
+export default function mountEmblem(host, { reducedMotion = false, open = true, onDepartment, label, tokens: showTokens = true } = {}) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power', preserveDrawingBuffer: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -121,18 +141,20 @@ export default function mountEmblem(host, { reducedMotion = false, open = true, 
   camera.position.set(0, 0, 6.3);
 
   // Lighting follows the shop's hours: lively when open, a calmer "night" look when closed.
-  const hemi = new THREE.HemisphereLight(WHITE, GRAPHITE, open ? 1.15 : .75);
-  const key = new THREE.DirectionalLight(WHITE, open ? 2.4 : 1.3); key.position.set(-3.5, 4.5, 6);
-  const fill = new THREE.DirectionalLight(WHITE, open ? .9 : .45); fill.position.set(4, -1.5, 4);
-  const rim = new THREE.DirectionalLight(WHITE, open ? 1.2 : 2.2); rim.position.set(2, 3, -5);
+  const LIGHT = 2.6;
+  const hemi = new THREE.HemisphereLight(WHITE, GRAPHITE, 1.0 * LIGHT);
+  const key = new THREE.DirectionalLight(WHITE, .75 * LIGHT); key.position.set(-3.5, 4.5, 6);
+  const fill = new THREE.DirectionalLight(WHITE, .3 * LIGHT); fill.position.set(4, -1.5, 4);
+  const rim = new THREE.DirectionalLight(WHITE, open ? 1.0 : 1.6); rim.position.set(2, 3, -5);
   scene.add(hemi, key, fill, rim);
   const pace = open ? 1 : .6;
 
-  const material = (hex) => new THREE.MeshPhysicalMaterial({ color: hex, roughness: .34, metalness: .08, clearcoat: .9, clearcoatRoughness: .18, emissive: hex, emissiveIntensity: 0 });
+  const material = (glow) => new THREE.MeshPhysicalMaterial({ color: WHITE, vertexColors: true, roughness: .5, metalness: 0, specularIntensity: .15, clearcoat: .2, clearcoatRoughness: .3, emissive: glow, emissiveIntensity: 0 });
   const emblem = new THREE.Group();
-  const blueMat = material(BLUE);
-  const blue = new THREE.Mesh(extrude(SHAPES.blue, .34), blueMat);
-  const green = new THREE.Mesh(extrude(SHAPES.green, .42), material(GREEN));
+  const blueMat = material(0x028be3);
+  const blue = new THREE.Mesh(paint(extrude(SHAPES.blue, .34), LOGO_BLUE), blueMat);
+  const green = new THREE.Mesh(paint(extrude(SHAPES.green, .42), LOGO_GREEN), material(0x2daf0c));
+  green.material.color.setScalar(1.1); // the road shows more side wall, so lift it to match the artwork
   green.position.z = .05;
   emblem.add(blue, green);
   scene.add(emblem);
@@ -146,7 +168,7 @@ export default function mountEmblem(host, { reducedMotion = false, open = true, 
 
   // Tokens orbiting the emblem: lightning (electrical), bulb (all products), house (smart home), plant (our path).
   const DEPTS = [['electrical', BLUE], ['bulb', GRAPHITE], ['smart', GRAPHITE], ['plant', GREEN]];
-  const ring = new THREE.Group(); ring.rotation.x = .32; scene.add(ring);
+  const ring = new THREE.Group(); ring.rotation.x = .32; scene.add(ring); ring.visible = showTokens;
   const tokens = DEPTS.map(([dept, col], i) => {
     const holder = new THREE.Group(), face = new THREE.Group();
     const disc = new THREE.Mesh(new THREE.CylinderGeometry(.17, .17, .06, 40), new THREE.MeshPhysicalMaterial({ color: col, roughness: .4, clearcoat: .6 }));
@@ -305,5 +327,5 @@ export default function mountEmblem(host, { reducedMotion = false, open = true, 
   resize();
   host.classList.add('is-3d');
   update();
-  return { renderer, draw };
+  return { renderer, draw: () => renderer.render(scene, camera) };
 }

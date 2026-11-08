@@ -1747,7 +1747,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   var lowMemory = navigator.deviceMemory && navigator.deviceMemory < 2;
   if (host && webgl && !lowData && !lowMemory) {
     var start = function () {
-      import('./assets/emblem3d.js?v=5').then(function (m) {
+      import('./assets/emblem3d.js?v=11').then(function (m) {
         m.default(host, {
           reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
           open: statusKey === 'open',
